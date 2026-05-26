@@ -501,10 +501,6 @@ body::before {
   grid-template-columns: 1fr 1fr;
   gap: 8px;
 }
-.plan-grid .plan-btn.smart-btn {
-  grid-column: 1 / -1;
-  background: linear-gradient(135deg, rgba(0,167,88,0.04) 0%, rgba(124,58,237,0.04) 100%);
-}
 .plan-btn {
   padding: 10px 10px 8px;
   border-radius: 10px;
@@ -523,7 +519,6 @@ body::before {
   border-color: var(--green);
   box-shadow: 0 0 12px rgba(0,167,88,0.15);
 }
-.plan-btn .pt { font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--t-faint); display: block; margin-bottom: 3px; }
 .plan-btn .pn { font-size: 13px; font-weight: 700; color: var(--t-primary); display: block; margin-bottom: 5px; }
 .plan-btn.active .pn { color: var(--green-darker); }
 .plan-btn .p-tags { display: flex; flex-wrap: wrap; gap: 3px; }
@@ -1114,19 +1109,18 @@ body::before {
     <div class="trust-strip"><span>Petrus Jakub</span> · <span>Business Partner</span> · Manulife Indonesia</div>
   </div>
   <div class="header-right">
-    <a class="agent-ig-btn" href="https://wa.me/6287781896087" target="_blank" rel="noopener">
+    <div class="agent-ig-btn" onclick="startOver()">
       <div class="agent-ig-avatar">PJ</div>
       <div class="agent-ig-info">
         <span class="agent-ig-name">Petrus Jakub</span>
         <span class="agent-ig-handle">
           <svg class="ig-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="#25D366"/>
-            <path d="M16.5 13.5c-.3-.15-1.7-.85-2-.95-.27-.1-.46-.15-.66.15-.2.3-.75.95-.92 1.14-.17.2-.34.22-.63.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.74-1.64-2.04-.17-.3-.02-.46.13-.6.13-.13.3-.34.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.66-1.6-.9-2.2-.24-.57-.49-.5-.66-.5-.17 0-.37 0-.56 0-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35" fill="white"/>
+            <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          WhatsApp
+          Home
         </span>
       </div>
-    </a>
+    </div>
   </div>
 </header>
 
@@ -1342,18 +1336,20 @@ body::before {
 
 <script>
 const PLANS = [
-  { key:"smart", tier:"Smart", name:"MiUHC Smart", bed:"2 Bed", areaShort:"\u{1F1EE}\u{1F1E9} Indonesia", area:"Seluruh Indonesia", ded:true, badge:"Inner Limit", smart:true },
-  { key:"sapphire", tier:"Sapphire", name:"Sapphire", bed:"2 Bed", areaShort:"\u{1F1EE}\u{1F1E9} Seluruh Indonesia", area:"Seluruh Indonesia", ded:true, badge:"Inner Limit" },
-  { key:"jade", tier:"Jade", name:"Jade", bed:"1 Bed", areaShort:"\u{1F1EE}\u{1F1E9} Seluruh Indonesia", area:"Seluruh Indonesia", ded:false, badge:"Tanpa Inner Limit" },
-  { key:"topaz", tier:"Topaz", name:"Topaz", bed:"1 Bed", areaShort:"\u{1F30F} ID + MY & SG", area:"Indonesia + Malaysia & Singapura", ded:false, badge:"Tanpa Inner Limit" },
-  { key:"emerald", tier:"Emerald", name:"Emerald", bed:"1 Bed", areaShort:"\u{1F30D} Dunia exc. USA", area:"Seluruh Dunia kecuali USA", ded:false, badge:"Tanpa Inner Limit" },
-  { key:"ruby", tier:"Ruby", name:"Ruby", bed:"1 Bed", areaShort:"\u{1F310} Seluruh Dunia", area:"Seluruh Dunia", ded:false, badge:"Tanpa Inner Limit" },
+  { key:"sapphire", name:"Sapphire", bed:"Kamar 500rb", areaShort:"\u{1F1EE}\u{1F1E9} Indonesia", area:"Seluruh Indonesia", ded:true, badge:"Inner Limit" },
+  { key:"jade_id", name:"Jade ID", bed:"2 Bed", areaShort:"\u{1F1EE}\u{1F1E9} Indonesia", area:"Seluruh Indonesia", ded:false, badge:"Tanpa Inner Limit" },
+  { key:"jade", name:"Jade", bed:"2 Bed", areaShort:"\u{1F30F} ID + MY & SG", area:"Indonesia + Malaysia & Singapura", ded:false, badge:"Tanpa Inner Limit" },
+  { key:"topaz_id", name:"Topaz ID", bed:"1 Bed", areaShort:"\u{1F1EE}\u{1F1E9} Indonesia", area:"Seluruh Indonesia", ded:false, badge:"Tanpa Inner Limit", bestSeller:true },
+  { key:"topaz", name:"Topaz", bed:"1 Bed", areaShort:"\u{1F30F} ID + MY & SG", area:"Indonesia + Malaysia & Singapura", ded:false, badge:"Tanpa Inner Limit" },
+  { key:"emerald", name:"Emerald", bed:"1 Bed", areaShort:"\u{1F30D} Dunia exc. USA", area:"Seluruh Dunia kecuali USA", ded:false, badge:"Tanpa Inner Limit" },
+  { key:"ruby", name:"Ruby", bed:"1 Bed", areaShort:"\u{1F310} Seluruh Dunia", area:"Seluruh Dunia", ded:false, badge:"Tanpa Inner Limit" },
 ];
 
 const DATA = {
-  smart:{0:[4368000,4095000],1:[4368000,4095000],2:[4368000,4095000],3:[4368000,4095000],4:[4368000,4095000],5:[2443350,2124850],6:[2443350,2125500],7:[2443350,2125500],8:[2444000,2125500],9:[2444000,2125500],10:[2444000,2125500],11:[2444000,2125500],12:[2444000,2125500],13:[2444000,2125500],14:[2444000,2125500],15:[2444000,2125500],16:[2444000,2125500],17:[2444000,2125500],18:[2444650,2126150],19:[3032900,3108300],20:[3036800,3112200],21:[3040050,3115450],22:[3043300,3118700],23:[3046550,3122600],24:[3050450,3125850],25:[3053700,3129750],26:[3118050,3264950],27:[3131050,3278600],28:[3144050,3291600],29:[3157050,3305900],30:[3170050,3318900],31:[3176550,3493100],32:[3193450,3511950],33:[3211000,3531450],34:[3228550,3550300],35:[3245450,3569150],36:[3550950,3920150],37:[3580200,3952650],38:[3609450,3985150],39:[3639350,4017650],40:[3667950,4049500],41:[4352400,4698200],42:[4618900,4985500],43:[4628000,4995900],44:[4637750,5005650],45:[4835350,5220150],46:[5530850,5818150],47:[5855850,6160700],48:[6169800,6490900],49:[6338150,6667700],50:[6506500,6845150],51:[8500700,8646300],52:[8581950,8729500],53:[8664500,8813350],54:[8747700,8897850],55:[8827000,8978450],56:[9831250,9364550],57:[10154950,9673300],58:[10173150,9690850],59:[10192000,9708400],60:[10495550,9997650],61:[14319500,13063700],62:[14516450,13243100],63:[14715350,13425100],64:[14917500,13609700],65:[15106000,13781300],66:[18265000,16056300],67:[18267600,16059550],68:[18423600,16196050],69:[18829850,16553550],70:[19236100,16911050],71:[22884550,19605950],72:[22887150,19607900],73:[22900150,19618950],74:[23088650,19780150],75:[24046750,20601100],76:[27628250,23324600],77:[27632150,23327850],78:[27647100,23340200],79:[27874600,23532600],80:[29031600,24509550],81:[33440550,27606800],82:[33444450,27610050],83:[33462650,27625650],84:[33738250,27852500],85:[35138350,29008850],86:[40556100,32764550],87:[40561300,32768450],88:[40583400,32786650],89:[40917500,33056400],90:[42615950,34428550],91:[49115300,38936950],92:[49121150,38942150],93:[49148450,38963600],94:[49552750,39284050],95:[51609350,40914900],96:[59324200,46413900],97:[59332000,46419750],98:[59364500,46445100],99:[59853300,46827300],100:[62337600,48770800]},
   sapphire:{0:[6720000,6300000],1:[6720000,6300000],2:[6720000,6300000],3:[6720000,6300000],4:[6720000,6300000],5:[3759000,3269000],6:[3759000,3270000],7:[3759000,3270000],8:[3760000,3270000],9:[3760000,3270000],10:[3760000,3270000],11:[3760000,3270000],12:[3760000,3270000],13:[3760000,3270000],14:[3760000,3270000],15:[3760000,3270000],16:[3760000,3270000],17:[3760000,3270000],18:[3761000,3271000],19:[4666000,4782000],20:[4672000,4788000],21:[4677000,4793000],22:[4682000,4798000],23:[4687000,4804000],24:[4693000,4809000],25:[4698000,4815000],26:[4797000,5023000],27:[4817000,5044000],28:[4837000,5064000],29:[4857000,5086000],30:[4877000,5106000],31:[4887000,5374000],32:[4913000,5403000],33:[4940000,5433000],34:[4967000,5462000],35:[4993000,5491000],36:[5463000,6031000],37:[5508000,6081000],38:[5553000,6131000],39:[5599000,6181000],40:[5643000,6230000],41:[6696000,7228000],42:[7106000,7670000],43:[7120000,7686000],44:[7135000,7701000],45:[7439000,8031000],46:[8509000,8951000],47:[9009000,9478000],48:[9492000,9986000],49:[9751000,10258000],50:[10010000,10531000],51:[13078000,13302000],52:[13203000,13430000],53:[13330000,13559000],54:[13458000,13689000],55:[13580000,13813000],56:[15125000,14407000],57:[15623000,14882000],58:[15651000,14909000],59:[15680000,14936000],60:[16147000,15381000],61:[22030000,20098000],62:[22333000,20374000],63:[22639000,20654000],64:[22950000,20938000],65:[23240000,21202000],66:[28100000,24702000],67:[28104000,24707000],68:[28344000,24917000],69:[28969000,25467000],70:[29594000,26017000],71:[35207000,30163000],72:[35211000,30166000],73:[35231000,30183000],74:[35521000,30431000],75:[36995000,31694000],76:[42505000,35884000],77:[42511000,35889000],78:[42534000,35908000],79:[42884000,36204000],80:[44664000,37707000],81:[51447000,42472000],82:[51453000,42477000],83:[51481000,42501000],84:[51905000,42850000],85:[54059000,44629000],86:[62394000,50407000],87:[62402000,50413000],88:[62436000,50441000],89:[62950000,50856000],90:[65563000,52967000],91:[75562000,59903000],92:[75571000,59911000],93:[75613000,59944000],94:[76235000,60437000],95:[79399000,62946000],96:[91268000,71406000],97:[91280000,71415000],98:[91330000,71454000],99:[92082000,72042000],100:[95904000,75032000]},
+  jade_id:{0:[8116650,8230550],1:[8116650,8230550],2:[8116650,8230550],3:[8116650,8230550],4:[8116650,8230550],5:[4820350,4892600],6:[4821200,4892600],7:[4821200,4892600],8:[4821200,4892600],9:[4821200,4892600],10:[4821200,4892600],11:[4821200,4893450],12:[4821200,4893450],13:[4822050,4893450],14:[4822050,4893450],15:[4822050,4893450],16:[4822050,4893450],17:[4822050,4894300],18:[4822050,4894300],19:[6091100,7430700],20:[6097900,7439200],21:[6104700,7447700],22:[6111500,7456200],23:[6118300,7464700],24:[6125100,7473200],25:[6131900,7480850],26:[6163350,7522500],27:[6188850,7553950],28:[6214350,7584550],29:[6240700,7616850],30:[6266200,7647450],31:[6495700,8562050],32:[6531400,8608800],33:[6566250,8655550],34:[6602800,8703150],35:[6637650,8749050],36:[7321050,9478350],37:[7381400,9556550],38:[7442600,9635600],39:[7503800,9714650],40:[7562450,9791150],41:[8941150,11137550],42:[9488550,11820100],43:[9508100,11843900],44:[9527650,11867700],45:[9934800,12375150],46:[12180500,13146950],47:[12897050,13920450],48:[13588100,14666750],49:[13958700,15067100],50:[14330150,15467450],51:[19275450,19260150],52:[19460750,19444600],53:[19647750,19631600],54:[19836450,19820300],55:[20015800,19999650],56:[22628700,21166700],57:[23373300,21863700],58:[23415800,21902800],59:[23458300,21942750],60:[24157000,22596400],61:[31625100,27613100],62:[32059450,27992200],63:[32499750,28376400],64:[32946000,28765700],65:[33362500,29129500],66:[41295550,34167450],67:[41302350,34173400],68:[41654250,34464100],69:[42573100,35224850],70:[43491950,35984750],71:[51448800,42574800],72:[51455600,42579900],73:[51483650,42603700],74:[51907800,42953900],75:[54062550,44737200],76:[62144350,51433500],77:[62152000,51440300],78:[62186000,51468350],79:[62697700,51892500],80:[65300400,54046400],81:[75223300,62268450],82:[75232650,62276100],83:[75274300,62310100],84:[75893950,62822650],85:[79044050,65430450],86:[91233050,75524200],87:[91244950,75533550],88:[91295100,75575200],89:[92046500,76197400],90:[95866400,79360250],91:[110479600,91465950],92:[110494050,91477000],93:[110554400,91527150],94:[111464750,92281100],95:[116091300,96111200],96:[133438950,110477050],97:[133455950,110490650],98:[133529050,110551850],99:[134628100,111461350],100:[140216000,116087900]},
   jade:{0:[9549000,9683000],1:[9549000,9683000],2:[9549000,9683000],3:[9549000,9683000],4:[9549000,9683000],5:[5671000,5756000],6:[5672000,5756000],7:[5672000,5756000],8:[5672000,5756000],9:[5672000,5756000],10:[5672000,5756000],11:[5672000,5757000],12:[5672000,5757000],13:[5673000,5757000],14:[5673000,5757000],15:[5673000,5757000],16:[5673000,5757000],17:[5673000,5758000],18:[5673000,5758000],19:[7166000,8742000],20:[7174000,8752000],21:[7182000,8762000],22:[7190000,8772000],23:[7198000,8782000],24:[7206000,8792000],25:[7214000,8801000],26:[7251000,8850000],27:[7281000,8887000],28:[7311000,8923000],29:[7342000,8961000],30:[7372000,8997000],31:[7642000,10073000],32:[7684000,10128000],33:[7725000,10183000],34:[7768000,10239000],35:[7809000,10293000],36:[8613000,11151000],37:[8684000,11243000],38:[8756000,11336000],39:[8828000,11429000],40:[8897000,11519000],41:[10519000,13103000],42:[11163000,13906000],43:[11186000,13934000],44:[11209000,13962000],45:[11688000,14559000],46:[14330000,15467000],47:[15173000,16377000],48:[15986000,17255000],49:[16422000,17726000],50:[16859000,18197000],51:[22677000,22659000],52:[22895000,22876000],53:[23115000,23096000],54:[23337000,23318000],55:[23548000,23529000],56:[26622000,24902000],57:[27498000,25722000],58:[27548000,25768000],59:[27598000,25815000],60:[28420000,26584000],61:[37206000,32486000],62:[37717000,32932000],63:[38235000,33384000],64:[38760000,33842000],65:[39250000,34270000],66:[48583000,40197000],67:[48591000,40204000],68:[49005000,40546000],69:[50086000,41441000],70:[51167000,42335000],71:[60528000,50088000],72:[60536000,50094000],73:[60569000,50122000],74:[61068000,50534000],75:[63603000,52632000],76:[73111000,60510000],77:[73120000,60518000],78:[73160000,60551000],79:[73762000,61050000],80:[76824000,63584000],81:[88498000,73257000],82:[88509000,73266000],83:[88558000,73306000],84:[89287000,73909000],85:[92993000,76977000],86:[107333000,88852000],87:[107347000,88863000],88:[107406000,88912000],89:[108290000,89644000],90:[112784000,93365000],91:[129976000,107607000],92:[129993000,107620000],93:[130064000,107679000],94:[131135000,108566000],95:[136578000,113072000],96:[156987000,129973000],97:[157007000,129989000],98:[157093000,130061000],99:[158386000,131131000],100:[164960000,136574000]},
+  topaz_id:{0:[12107200,12279200],1:[12107200,12279200],2:[12107200,12279200],3:[12107200,12279200],4:[12107200,12279200],5:[7192800,7300000],6:[7192800,7300000],7:[7192800,7300000],8:[7192800,7300000],9:[7192800,7300800],10:[7193600,7300800],11:[7193600,7300800],12:[7193600,7300800],13:[7193600,7301600],14:[7194400,7301600],15:[7194400,7301600],16:[7194400,7301600],17:[7194400,7302400],18:[7195200,7302400],19:[8060000,9836800],20:[8068800,9848000],21:[8078400,9859200],22:[8087200,9870400],23:[8096000,9881600],24:[8105600,9892000],25:[8114400,9903200],26:[8157600,9956000],27:[8192000,9997600],28:[8225600,10039200],29:[8260000,10080800],30:[8293600,10121600],31:[8596000,11330400],32:[8643200,11392800],33:[8690400,11454400],34:[8737600,11516800],35:[8783200,11577600],36:[9691200,12544800],37:[9770400,12648000],38:[9851200,12752800],39:[9932800,12857600],40:[10010400,12958400],41:[11836800,14740800],42:[12561600,15644000],43:[12587200,15676000],44:[12612800,15708000],45:[13152000,16379200],46:[15732000,16981600],47:[16656800,17980800],48:[17549600,18944000],49:[18028800,19460800],50:[18508000,19978400],51:[24900000,24879200],52:[25139200,25118400],53:[25380800,25360000],54:[25624800,25603200],55:[25856800,25835200],56:[30346400,28388800],57:[31345600,29324000],58:[31402400,29377600],59:[31460000,29430400],60:[32396800,30307200],61:[40850400,35668800],62:[41412000,36158400],63:[41980000,36654400],64:[42556800,37158400],65:[43094400,37627200],66:[53344000,44134400],67:[53352800,44142400],68:[53807200,44517600],69:[54994400,45500000],70:[56181600,46482400],71:[66459200,54995200],72:[66468000,55002400],73:[66504000,55032000],74:[67051200,55485600],75:[69834400,57788000],76:[80276000,66442400],77:[80286400,66450400],78:[80330400,66487200],79:[80991200,67034400],80:[84353600,69816800],81:[97174400,80436000],82:[97186400,80446400],83:[97240000,80490400],84:[98040000,81152800],85:[102109600,84521600],86:[117855200,97562400],87:[117870400,97575200],88:[117935200,97628800],89:[118905600,98432000],90:[123841600,102517600],91:[142717600,118155200],92:[142736000,118170400],93:[142814400,118235200],94:[143989600,119208000],95:[149966400,124156000],96:[172373600,142714400],97:[172396000,142732800],98:[172490400,142810400],99:[173910400,143986400],100:[181128800,149962400]},
   topaz:{0:[15134000,15349000],1:[15134000,15349000],2:[15134000,15349000],3:[15134000,15349000],4:[15134000,15349000],5:[8991000,9125000],6:[8991000,9125000],7:[8991000,9125000],8:[8991000,9125000],9:[8991000,9126000],10:[8992000,9126000],11:[8992000,9126000],12:[8992000,9126000],13:[8992000,9127000],14:[8993000,9127000],15:[8993000,9127000],16:[8993000,9127000],17:[8993000,9128000],18:[8994000,9128000],19:[10075000,12296000],20:[10086000,12310000],21:[10098000,12324000],22:[10109000,12338000],23:[10120000,12352000],24:[10132000,12365000],25:[10143000,12379000],26:[10197000,12445000],27:[10240000,12497000],28:[10282000,12549000],29:[10325000,12601000],30:[10367000,12652000],31:[10745000,14163000],32:[10804000,14241000],33:[10863000,14318000],34:[10922000,14396000],35:[10979000,14472000],36:[12114000,15681000],37:[12213000,15810000],38:[12314000,15941000],39:[12416000,16072000],40:[12513000,16198000],41:[14796000,18426000],42:[15702000,19555000],43:[15734000,19595000],44:[15766000,19635000],45:[16440000,20474000],46:[19665000,21227000],47:[20821000,22476000],48:[21937000,23680000],49:[22536000,24326000],50:[23135000,24973000],51:[31125000,31099000],52:[31424000,31398000],53:[31726000,31700000],54:[32031000,32004000],55:[32321000,32294000],56:[37933000,35486000],57:[39182000,36655000],58:[39253000,36722000],59:[39325000,36788000],60:[40496000,37884000],61:[51063000,44586000],62:[51765000,45198000],63:[52475000,45818000],64:[53196000,46448000],65:[53868000,47034000],66:[66680000,55168000],67:[66691000,55178000],68:[67259000,55647000],69:[68743000,56875000],70:[70227000,58103000],71:[83074000,68744000],72:[83085000,68753000],73:[83130000,68790000],74:[83814000,69357000],75:[87293000,72235000],76:[100345000,83053000],77:[100358000,83063000],78:[100413000,83109000],79:[101239000,83793000],80:[105442000,87271000],81:[121468000,100545000],82:[121483000,100558000],83:[121550000,100613000],84:[122550000,101441000],85:[127637000,105652000],86:[147319000,121953000],87:[147338000,121969000],88:[147419000,122036000],89:[148632000,123040000],90:[154802000,128147000],91:[178397000,147694000],92:[178420000,147713000],93:[178518000,147794000],94:[179987000,149010000],95:[187458000,155195000],96:[215467000,178393000],97:[215495000,178416000],98:[215613000,178513000],99:[217388000,179983000],100:[226411000,187453000]},
   emerald:{0:[37017000,37263000],1:[37017000,37263000],2:[37017000,37263000],3:[37017000,37263000],4:[37017000,37263000],5:[23503000,23605000],6:[23504000,23606000],7:[23504000,23606000],8:[23505000,23607000],9:[23506000,23608000],10:[23506000,23608000],11:[23507000,23609000],12:[23507000,23610000],13:[23508000,23610000],14:[23509000,23611000],15:[23509000,23611000],16:[23510000,23612000],17:[23510000,23613000],18:[23511000,23613000],19:[27631000,33172000],20:[27662000,33209000],21:[27693000,33247000],22:[27724000,33284000],23:[27755000,33322000],24:[27786000,33359000],25:[27818000,33397000],26:[27957000,33564000],27:[28033000,33653000],28:[28110000,33743000],29:[28186000,33833000],30:[28262000,33922000],31:[29010000,39261000],32:[29168000,39475000],33:[29327000,39690000],34:[29486000,39907000],35:[29642000,40117000],36:[30617000,40463000],37:[30870000,40797000],38:[31124000,41134000],39:[31381000,41473000],40:[31628000,41799000],41:[32720000,41907000],42:[34724000,42015000],43:[34795000,42100000],44:[34865000,42186000],45:[36355000,43989000],46:[36884000,45028000],47:[39054000,46067000],48:[41146000,48535000],49:[42270000,49860000],50:[43393000,51185000],51:[46991000,52622000],52:[47442000,53127000],53:[47898000,53637000],54:[48358000,54152000],55:[48796000,54643000],56:[60970000,62747000],57:[62978000,64813000],58:[63093000,64931000],59:[63207000,65049000],60:[65090000,66986000],61:[81733000,76280000],62:[82855000,77327000],63:[83993000,78389000],64:[85146000,79465000],65:[86222000,80469000],66:[96872000,82556000],67:[96889000,82570000],68:[97713000,83272000],69:[99869000,85110000],70:[102025000,86948000],71:[110514000,91766000],72:[110528000,91777000],73:[110589000,91828000],74:[111499000,92583000],75:[116127000,96426000],76:[133854000,109454000],77:[133871000,109468000],78:[133945000,109528000],79:[135047000,110429000],80:[140653000,115013000],81:[201815000,161268000],82:[201841000,161289000],83:[201952000,161377000],84:[203614000,162705000],85:[212065000,169459000],86:[293960000,229745000],87:[293997000,229774000],88:[294159000,229900000],89:[296580000,231792000],90:[308890000,241413000],91:[335059000,257280000],92:[335102000,257313000],93:[335286000,257454000],94:[338045000,259573000],95:[352076000,270347000],96:[352445000,270630000],97:[352815000,270914000],98:[353185000,271198000],99:[353552000,271482000],100:[368227000,280242000]},
   ruby:{0:[67124000,66958000],1:[67124000,66958000],2:[67124000,66958000],3:[67124000,66958000],4:[67124000,66958000],5:[42408000,42300000],6:[42409000,42301000],7:[42410000,42303000],8:[42411000,42304000],9:[42412000,42305000],10:[42413000,42306000],11:[42414000,42307000],12:[42415000,42308000],13:[42417000,42309000],14:[42418000,42310000],15:[42419000,42312000],16:[42420000,42313000],17:[42421000,42314000],18:[42422000,42315000],19:[51692000,58848000],20:[51751000,58914000],21:[51809000,58981000],22:[51867000,59047000],23:[51925000,59113000],24:[51984000,59180000],25:[52042000,59247000],26:[53199000,60560000],27:[53420000,60811000],28:[53642000,61064000],29:[53865000,61317000],30:[54083000,61566000],31:[57847000,71232000],32:[58162000,71620000],33:[58479000,72011000],34:[58797000,72403000],35:[59107000,72785000],36:[65312000,74119000],37:[65850000,74730000],38:[66394000,75347000],39:[66941000,75968000],40:[67467000,76564000],41:[67956000,77857000],42:[72118000,79150000],43:[72265000,79311000],44:[72412000,79473000],45:[75506000,82869000],46:[87521000,94427000],47:[92669000,99981000],48:[97634000,105337000],49:[100300000,108214000],50:[102966000,111090000],51:[130420000,122357000],52:[131672000,123532000],53:[132936000,124718000],54:[134213000,125916000],55:[135429000,127057000],56:[171991000,141180000],57:[177654000,145829000],58:[177977000,146094000],59:[178300000,146359000],60:[183612000,150719000],61:[223360000,181390000],62:[226427000,183881000],63:[229536000,186405000],64:[232687000,188965000],65:[235627000,191352000],66:[258688000,202501000],67:[258733000,202536000],68:[260934000,204259000],69:[266692000,208766000],70:[272450000,213274000],71:[287654000,219433000],72:[287690000,219461000],73:[287848000,219581000],74:[290217000,221388000],75:[302263000,230578000],76:[347392000,261169000],77:[347436000,261202000],78:[347627000,261346000],79:[350488000,263496000],80:[365036000,274433000],81:[565679000,415776000],82:[565751000,415829000],83:[566062000,416057000],84:[570720000,419481000],85:[594409000,436893000],86:[725969000,522031000],87:[726062000,522098000],88:[726461000,522384000],89:[732439000,526684000],90:[762841000,548545000],91:[763840000,551615000],92:[764840000,554702000],93:[765841000,557806000],94:[766836000,560927000],95:[798665000,563894000],96:[809563000,565185000],97:[809667000,565257000],98:[810111000,565568000],99:[816778000,570222000],100:[850681000,593891000]}
@@ -1372,6 +1368,7 @@ let currentPerson = 0;
 let persons = [];
 let selectedFreq = 'annual';
 let isSyariah = false;
+let isSmart = false;
 
 const DEFAULT_NAMES = ['Ayah','Ibu','Anak 1','Anak 2','Anak 3'];
 
@@ -1384,7 +1381,7 @@ function initPersons(n) {
       age: 35,
       birthdate: '',
       gender: 'M',
-      plan: 'jade'
+      plan: 'topaz_id'
     });
   }
 }
@@ -1481,14 +1478,14 @@ function renderPersonForm(i) {
   let planHTML = PLANS.map(pl => {
     const dedTag = pl.ded ? 'ded' : 'noded';
     const dedLabel = pl.ded ? 'Dengan Inner Limit' : 'Tanpa Inner Limit';
-    const smartClass = pl.smart ? ' smart-btn' : '';
-    return '<button class="plan-btn'+smartClass+(p.plan === pl.key ? ' active' : '')+'" data-pk="'+pl.key+'" onclick="selectPlan(this)">' +
-      '<span class="pt">'+pl.tier+'</span>' +
+    const bestSellerBadge = pl.bestSeller ? '<span class="p-tag" style="background:rgba(234,179,8,0.15);color:#b45309;font-weight:700;">&#11088; Best Seller</span>' : '';
+    return '<button class="plan-btn'+(p.plan === pl.key ? ' active' : '')+'" data-pk="'+pl.key+'" onclick="selectPlan(this)">' +
       '<span class="pn">'+pl.name+'</span>' +
       '<span class="p-tags">' +
         '<span class="p-tag bed">\u{1F6CF} '+pl.bed+'</span>' +
         '<span class="p-tag area">'+pl.areaShort+'</span>' +
         '<span class="p-tag '+dedTag+'">'+dedLabel+'</span>' +
+        bestSellerBadge +
       '</span></button>';
   }).join('');
 
@@ -1527,10 +1524,18 @@ function renderPersonForm(i) {
       '</div>' +
     '</div>' +
     '<div class="field-group">' +
+      '<label class="field-label">Tipe Produk</label>' +
+      '<div class="toggle-row">' +
+        '<button class="toggle-btn'+(isSmart===false?' active':'')+'" data-sm="0" onclick="selectSmart(this)">MiUHC</button>' +
+        '<button class="toggle-btn'+(isSmart===true?' active':'')+'" data-sm="1" onclick="selectSmart(this)">MiUHC Smart</button>' +
+      '</div>' +
+      (isSmart ? '<div style="margin-top:6px;font-size:10px;color:var(--green);line-height:1.5;padding:6px 10px;background:rgba(0,167,88,0.08);border-radius:8px;">MiUHC Smart: premi lebih terjangkau dengan limit kamar &amp; manfaat yang disesuaikan</div>' : '') +
+    '</div>' +
+    '<div class="field-group">' +
       '<label class="field-label">Produk</label>' +
       '<div class="toggle-row">' +
         '<button class="toggle-btn'+(isSyariah===false?' active':'')+'" data-sy="0" onclick="selectSyariah(this)">Konvensional</button>' +
-        '<button class="toggle-btn'+(isSyariah===true?' active':'')+'" data-sy="1" onclick="selectSyariah(this)">☪ Syariah</button>' +
+        '<button class="toggle-btn'+(isSyariah===true?' active':'')+'" data-sy="1" onclick="selectSyariah(this)">\u262A Syariah</button>' +
       '</div>' +
       (isSyariah ? '<div style="margin-top:6px;font-size:10px;color:var(--purple);line-height:1.5;padding:6px 10px;background:rgba(124,58,237,0.08);border-radius:8px;">Sesuai prinsip syariah dengan akad Wakalah bil Ujrah dan dana Tabarru\'</div>' : '') +
     '</div>' +
@@ -1538,7 +1543,8 @@ function renderPersonForm(i) {
       '<label class="field-label">Plan MiUHC</label>' +
       '<div class="plan-grid">'+planHTML+'</div>' +
       '<div style="margin-top:8px;font-size:10px;color:var(--gray);line-height:1.6;">' +
-        'Smart & Sapphire: dengan inner limit · Jade-Ruby: tanpa inner limit (as charged)' +
+        'Sapphire: dengan inner limit · Jade-Ruby: tanpa inner limit (as charged)' +
+        (isSmart ? '<br><span style="color:var(--green);">Mode Smart aktif: premi x0.65</span>' : '') +
       '</div>' +
     '</div>' +
     '<div class="field-group">' +
@@ -1614,6 +1620,14 @@ function selectSyariah(btn) {
   calcInline();
 }
 
+function selectSmart(btn) {
+  document.querySelectorAll('[data-sm]').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  isSmart = btn.dataset.sm === '1';
+  renderPersonForm(currentPerson);
+  calcInline();
+}
+
 function selectFreq(btn) {
   document.querySelectorAll('[data-fk]').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
@@ -1633,12 +1647,13 @@ function calcInline() {
     el.innerHTML = '<div class="field-error"><span class="fe-icon">⚠️</span> Usia masuk maksimal <strong>70 tahun</strong>. Silakan periksa kembali.</div>';
     return;
   }
-  const baseAnnual = Math.round(row[p.gender === 'M' ? 0 : 1] * (isSyariah ? 1.02 : 1));
+  const baseAnnual = Math.round(row[p.gender === 'M' ? 0 : 1] * (isSyariah ? 1.02 : 1) * (isSmart ? 0.65 : 1));
   const freq = FREQ.find(f => f.key === selectedFreq);
   const perInstalment = Math.round(baseAnnual * freq.x);
   const totalPerYear = perInstalment * freq.times;
   let secondLine = freq.key === 'annual' ? '1x pembayaran / tahun' : freq.times+'x '+fmt(perInstalment)+' / tahun = '+fmt(totalPerYear);
   const syariahLabel = isSyariah ? ' · <span style="color:#a78bfa;">Syariah</span>' : '';
+  const smartLabel = isSmart ? ' · <span style="color:#4ade80;">Smart</span>' : '';
 
   el.innerHTML =
     '<div class="inline-result pop">' +
@@ -1646,7 +1661,7 @@ function calcInline() {
         '<div class="ir-annual">'+fmt(perInstalment)+'</div>' +
         '<div class="ir-monthly">'+secondLine+'</div>' +
       '</div>' +
-      '<div class="ir-right">'+plan.name+syariahLabel+'<br>'+(p.gender === 'M' ? 'Laki-laki' : 'Perempuan')+', '+p.age+' thn<br><span style="color:#4ade80;font-size:10px;">'+freq.label+'</span></div>' +
+      '<div class="ir-right">'+plan.name+syariahLabel+smartLabel+'<br>'+(p.gender === 'M' ? 'Laki-laki' : 'Perempuan')+', '+p.age+' thn<br><span style="color:#4ade80;font-size:10px;">'+freq.label+'</span></div>' +
     '</div>';
   renderPersonTabs();
 }
@@ -1678,7 +1693,7 @@ function renderSummary() {
     const plan = PLANS.find(x => x.key === p.plan);
     const row = DATA[p.plan]?.[p.age];
     if (!row) return;
-    const baseAnnual = Math.round(row[p.gender === 'M' ? 0 : 1] * (isSyariah ? 1.02 : 1));
+    const baseAnnual = Math.round(row[p.gender === 'M' ? 0 : 1] * (isSyariah ? 1.02 : 1) * (isSmart ? 0.65 : 1));
     const perInstalment = Math.round(baseAnnual * freq.x);
     const totalPerYear = perInstalment * freq.times;
     grandTotalPerYear += totalPerYear;
@@ -1686,12 +1701,13 @@ function renderSummary() {
 
     let detailFreq = freq.key === 'annual' ? 'Bayar 1x / tahun' : freq.times+'x '+fmt(perInstalment)+' = '+fmt(totalPerYear)+'/thn';
     const syariahBadge = isSyariah ? ' · <span style="color:var(--purple);font-size:10px;">Syariah</span>' : '';
+    const smartBadge = isSmart ? ' · <span style="color:var(--green);font-size:10px;">Smart</span>' : '';
 
     html +=
       '<div class="summary-card">' +
         '<div class="sc-left">' +
           '<div class="sc-name">'+p.name+'</div>' +
-          '<div class="sc-detail">'+(p.gender === 'M' ? 'Laki-laki' : 'Perempuan')+' · '+p.age+' thn<br>'+plan.name+' · '+plan.area+syariahBadge+'<br><span style="color:var(--green);font-size:10px;">'+detailFreq+'</span></div>' +
+          '<div class="sc-detail">'+(p.gender === 'M' ? 'Laki-laki' : 'Perempuan')+' · '+p.age+' thn<br>'+plan.name+' · '+plan.area+syariahBadge+smartBadge+'<br><span style="color:var(--green);font-size:10px;">'+detailFreq+'</span></div>' +
         '</div>' +
         '<div class="sc-right">' +
           '<div class="sc-amount">'+fmt(perInstalment)+'</div>' +
@@ -1722,11 +1738,11 @@ function renderSummary() {
   const grandPerInstalment = persons.reduce((sum, p) => {
     const row = DATA[p.plan]?.[p.age];
     if (!row) return sum;
-    return sum + Math.round(Math.round(row[p.gender === 'M' ? 0 : 1] * (isSyariah ? 1.02 : 1)) * freq.x);
+    return sum + Math.round(Math.round(row[p.gender === 'M' ? 0 : 1] * (isSyariah ? 1.02 : 1) * (isSmart ? 0.65 : 1)) * freq.x);
   }, 0);
 
   totalBar.innerHTML =
-    '<div><div class="tb-label">Total per '+freq.label+' · '+persons.length+' orang'+(isSyariah ? ' · Syariah' : '')+'</div><div class="tb-amount">'+fmt(grandPerInstalment)+'</div></div>' +
+    '<div><div class="tb-label">Total per '+freq.label+' · '+persons.length+' orang'+(isSyariah ? ' · Syariah' : '')+(isSmart ? ' · Smart' : '')+'</div><div class="tb-amount">'+fmt(grandPerInstalment)+'</div></div>' +
     '<div class="tb-right"><div class="tb-mo">Total / Tahun</div><div class="tb-mo-amt">'+fmt(grandTotalPerYear)+'</div></div>';
 }
 
@@ -1735,7 +1751,7 @@ function switchToAnnual() { selectedFreq = 'annual'; renderSummary(); }
 function buildSummaryText() {
   const freq = FREQ.find(f => f.key === selectedFreq);
   let lines = [
-    'Manulife MiUltimate Health Care (MiUHC) 2026 - Estimasi Premi'+(isSyariah ? ' (Versi Syariah)' : ''),
+    'Manulife MiUltimate Health Care (MiUHC) 2026 - Estimasi Premi'+(isSyariah ? ' (Versi Syariah)' : '')+(isSmart ? ' (MiUHC Smart)' : ''),
     'Frekuensi Pembayaran: '+freq.label+' ('+freq.desc+')',
     '\u2500'.repeat(44)
   ];
@@ -1745,11 +1761,11 @@ function buildSummaryText() {
     const plan = PLANS.find(x => x.key === p.plan);
     const row = DATA[p.plan]?.[p.age];
     if (!row) return;
-    const baseAnnual = Math.round(row[p.gender === 'M' ? 0 : 1] * (isSyariah ? 1.02 : 1));
+    const baseAnnual = Math.round(row[p.gender === 'M' ? 0 : 1] * (isSyariah ? 1.02 : 1) * (isSmart ? 0.65 : 1));
     const perInstalment = Math.round(baseAnnual * freq.x);
     const totalPerYear = perInstalment * freq.times;
     grandTotalPerYear += totalPerYear;
-    lines.push(p.name+' ('+(p.gender === 'M' ? 'L' : 'P')+', '+p.age+' thn) - '+plan.name+' ('+plan.area+')'+(isSyariah ? ' [Syariah]' : ''));
+    lines.push(p.name+' ('+(p.gender === 'M' ? 'L' : 'P')+', '+p.age+' thn) - '+plan.name+' ('+plan.area+')'+(isSyariah ? ' [Syariah]' : '')+(isSmart ? ' [Smart]' : ''));
     lines.push('  Per '+freq.label+'  : '+fmt(perInstalment));
     if (freq.key !== 'annual') lines.push('  Total/Tahun : '+fmt(totalPerYear));
   });
@@ -1757,7 +1773,7 @@ function buildSummaryText() {
   const grandPerInstalment = persons.reduce((sum, p) => {
     const row = DATA[p.plan]?.[p.age];
     if (!row) return sum;
-    return sum + Math.round(Math.round(row[p.gender === 'M' ? 0 : 1] * (isSyariah ? 1.02 : 1)) * freq.x);
+    return sum + Math.round(Math.round(row[p.gender === 'M' ? 0 : 1] * (isSyariah ? 1.02 : 1) * (isSmart ? 0.65 : 1)) * freq.x);
   }, 0);
 
   lines.push('\u2500'.repeat(44));
@@ -1786,7 +1802,7 @@ function sendHealthOnlyWA() { closeWAModal(); sendToWA(); }
 function sendBothWA() {
   closeWAModal();
   const summary = buildSummaryText();
-  const intro = 'Hi Petrus Jakub! Tolong buatkan proposal asuransi kesehatan MiUHC'+(isSyariah ? ' Syariah' : '')+' dengan spesifikasi berikut:\n\n';
+  const intro = 'Hi Petrus Jakub! Tolong buatkan proposal asuransi kesehatan MiUHC'+(isSyariah ? ' Syariah' : '')+(isSmart ? ' Smart' : '')+' dengan spesifikasi berikut:\n\n';
   const uaVal = getUPRaw();
   const selectedPeople = lifeSelectedPersons.length > 0 ? lifeSelectedPersons.map(i => persons[i]) : persons;
   const names = selectedPeople.map(p => p.name+' ('+p.age+' thn)').join(', ');
@@ -1813,7 +1829,7 @@ function sendBothWA() {
 
 function sendToWA() {
   const summary = buildSummaryText();
-  const intro = 'Hi Petrus Jakub! Tolong buatkan proposal asuransi kesehatan MiUHC'+(isSyariah ? ' Syariah' : '')+' dengan spesifikasi berikut:\n\n';
+  const intro = 'Hi Petrus Jakub! Tolong buatkan proposal asuransi kesehatan MiUHC'+(isSyariah ? ' Syariah' : '')+(isSmart ? ' Smart' : '')+' dengan spesifikasi berikut:\n\n';
   window.open('https://wa.me/6287781896087?text='+encodeURIComponent(intro + summary), '_blank');
 }
 
@@ -1921,7 +1937,7 @@ function updateSteps(active) {
 }
 
 function startOver() {
-  personCount = 1; persons = []; currentPerson = 0; selectedFreq = 'annual'; isSyariah = false;
+  personCount = 1; persons = []; currentPerson = 0; selectedFreq = 'annual'; isSyariah = false; isSmart = false;
   lifeMasaBayar = null; lifeMasaProteksi = null; lifeNilaiTunai = false;
   lifeCardOpen = false; lifeSelectedPersons = [];
   assessAnswers = {}; currentAssessQ = 0;
@@ -2055,7 +2071,7 @@ function assessBack() { if (currentAssessQ > 0) { currentAssessQ--; renderAssess
 
 function showRecommendation() {
   const a = assessAnswers;
-  let planKey = 'jade';
+  let planKey = 'topaz_id';
   let reasons = [];
   let tags = [];
 
@@ -2075,14 +2091,14 @@ function showRecommendation() {
     planKey = budget === 'max' ? 'topaz' : 'topaz';
   } else {
     // Indonesia
-    if (budget === 'max') planKey = 'jade';
-    else if (budget === 'start') planKey = 'smart';
-    else planKey = 'jade';
+    if (budget === 'max') planKey = 'jade_id';
+    else if (budget === 'start') planKey = 'sapphire';
+    else planKey = 'topaz_id';
   }
 
   // Upgrade to no inner limit if no existing coverage
   if ((hasNone || (hasBPJS && !hasCompany && !hasPrivate)) && planKey === 'sapphire') {
-    planKey = 'jade';
+    planKey = 'topaz_id';
   }
 
   const plan = PLANS.find(p => p.key === planKey);
@@ -2093,17 +2109,18 @@ function showRecommendation() {
   if (hasCompany && !hasPrivate) reasons.push('Asuransi kantor bisa hilang saat resign -- <strong>proteksi pribadi tetap penting</strong>.');
   if (hasPrivate) reasons.push('Kamu sudah punya proteksi -- saatnya <strong>upgrade ke MiUHC coverage yang lebih luas</strong>.');
   if (concern === 'both' || concern === 'health') reasons.push('MiUHC memberikan perlindungan <strong>as charged tanpa inner limit</strong> (Jade-Ruby).');
-  if (budget === 'efficient') reasons.push('Plan ini memberikan <strong>value terbaik</strong> di kelasnya.');
+  if (budget === 'efficient') reasons.push('Plan ini memberikan <strong>value terbaik</strong> di kelasnya -- Best Seller!');
   if (budget === 'max') reasons.push('Plan ini menawarkan <strong>perlindungan paling luas</strong> yang tersedia.');
   if (area === 'world') reasons.push('Cakupan <strong>seluruh dunia</strong> cocok untuk mobilitas internasionalmu.');
   if (area === 'asia') reasons.push('Cakupan <strong>Indonesia + Malaysia & Singapura</strong> ideal untuk kamu.');
 
   // Tags
   tags = [
-    '🛏 '+plan.bed,
+    '\u{1F6CF} '+plan.bed,
     plan.areaShort,
-    plan.ded ? '⚡ Dengan Inner Limit' : '✅ Tanpa Inner Limit'
+    plan.ded ? '\u26A1 Dengan Inner Limit' : '\u2705 Tanpa Inner Limit'
   ];
+  if (plan.bestSeller) tags.push('\u2B50 Best Seller');
 
   // Life insurance note
   let lifeNote = '';
