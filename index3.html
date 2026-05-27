@@ -1372,6 +1372,21 @@ const DATA_SYARIAH = {
   }
 };
 
+const DATA_SYARIAH_PRIA = {
+  kamar: {
+    normal: {diamond:{0:41166700},ruby:{0:28880300},emerald:{0:16645900},topaz:{0:12022600},topaz_id:{0:9328200},jade:{0:9248100},jade_id:{0:7426200},sapphire:{0:5696900}},
+    smart: {diamond:{0:24700000},ruby:{0:17328200},emerald:{0:9987500},topaz:{0:7213600},topaz_id:{0:null},jade:{0:5548900},jade_id:{0:null},sapphire:{0:null}}
+  },
+  rawat_jalan: {
+    normal: {diamond:{0:12514500},ruby:{0:12514500},emerald:{0:11256300},topaz:{0:11256300},topaz_id:{0:11256300},jade:{0:11256300},jade_id:{0:11256300},sapphire:{0:11256300}},
+    smart: {diamond:{0:12514500},ruby:{0:12514500},emerald:{0:11256300},topaz:{0:11256300},topaz_id:{0:null},jade:{0:11256300},jade_id:{0:null},sapphire:{0:null}}
+  },
+  rawat_gigi: {
+    normal: {diamond:{0:2872300},ruby:{0:2872300},emerald:{0:2191900},topaz:{0:2191900},topaz_id:{0:2191900},jade:{0:2191900},jade_id:{0:2191900},sapphire:{0:2191900}},
+    smart: {diamond:{0:2872300},ruby:{0:2872300},emerald:{0:2191900},topaz:{0:2191900},topaz_id:{0:null},jade:{0:2191900},jade_id:{0:null},sapphire:{0:null}}
+  }
+};
+
 const FREQ = [
   { key:'annual',    label:'Tahunan',    short:'Thn',  x:1.00,   times:1,  desc:'100%' },
   { key:'semi',      label:'Semesteran', short:'6bln', x:0.52,   times:2,  desc:'52% x 2' },
@@ -1736,7 +1751,16 @@ function calcInline() {
 }
 
 function calcPremiumForPerson(p) {
-  const data = isSyariah ? DATA_SYARIAH : DATA_KONV;
+  let data;
+  if (isSyariah) {
+    if (p.gender === 'M' && p.age === 0) {
+      data = DATA_SYARIAH_PRIA;
+    } else {
+      data = DATA_SYARIAH;
+    }
+  } else {
+    data = DATA_KONV;
+  }
   const planKey = p.plan;
   let total = 0;
   let breakdown = [];
