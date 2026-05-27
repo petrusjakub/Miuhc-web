@@ -1735,7 +1735,15 @@ function calcInline() {
   let breakdownHtml = '';
   if (premium.breakdown.length > 1) {
     breakdownHtml = '<div style="margin-top:4px;font-size:10px;color:rgba(255,255,255,0.5);">' +
-      premium.breakdown.map(b => b.label+': '+fmt(b.amount)).join(' + ') + '</div>';
+      premium.breakdown.map(b => {
+        const fallbackNote = b.fallback ? ' <span style="color:#f59e0b;font-size:9px;">(tarif Normal)</span>' : '';
+        return b.label + fallbackNote + ': ' + fmt(b.amount);
+      }).join(' + ') + '</div>';
+  }
+  let fallbackWarningHtml = '';
+  if (premium.breakdown.some(b => b.fallback)) {
+    fallbackWarningHtml = '<div style="margin-top:6px;font-size:10px;color:#f59e0b;line-height:1.4;padding:4px 8px;background:rgba(245,158,11,0.08);border-radius:6px;">' +
+      '\u26A0\uFE0F Smart tidak tersedia untuk plan ini - menggunakan tarif Normal</div>';
   }
 
   el.innerHTML =
@@ -1746,7 +1754,8 @@ function calcInline() {
         breakdownHtml +
       '</div>' +
       '<div class="ir-right">'+plan.name+syariahLabel+smartLabel+'<br>'+(p.gender === 'M' ? 'Laki-laki' : 'Perempuan')+', '+p.age+' thn<br><span style="color:#4ade80;font-size:10px;">'+freq.label+'</span></div>' +
-    '</div>';
+    '</div>' +
+    fallbackWarningHtml;
   renderPersonTabs();
 }
 
