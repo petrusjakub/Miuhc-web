@@ -69,6 +69,8 @@
     --bg-input: rgba(255,255,255,0.07);
     --bg-card: rgba(255,255,255,0.04);
     --border-input: rgba(255,255,255,0.13);
+    --green-pale: rgba(0,167,88,0.15);
+    --green-darker: #4ade80;
   }
 }
 
@@ -629,6 +631,31 @@ body::before {
 .freq-btn .fn { font-size: 12px; font-weight: 600; color: var(--t-primary); display: block; }
 .freq-btn.active .fn { color: var(--green-darker); }
 .freq-btn .fm { font-size: 9px; color: var(--t-muted); display: block; margin-top: 2px; }
+
+/* ── FLOATING WA BUTTON ── */
+.wa-float-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+.wa-float-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+}
+.wa-float-btn svg { width: 28px; height: 28px; fill: #fff; }
 
 /* ── INLINE RESULT ── */
 .inline-result {
@@ -1388,10 +1415,10 @@ const DATA_SYARIAH_PRIA = {
 };
 
 const FREQ = [
-  { key:'annual',    label:'Tahunan',    short:'Thn',  x:1.00,   times:1,  desc:'100%' },
-  { key:'semi',      label:'Semesteran', short:'6bln', x:0.52,   times:2,  desc:'52% x 2' },
-  { key:'quarterly', label:'Triwulan',   short:'3bln', x:0.27,   times:4,  desc:'27% x 4' },
-  { key:'monthly',   label:'Bulanan',    short:'Bln',  x:0.10,   times:12, desc:'10% x 12' },
+  { key:'annual',    label:'Tahunan',    short:'Thn',  x:1.00,   times:1 },
+  { key:'semi',      label:'Semesteran', short:'6bln', x:0.525,  times:2 },
+  { key:'quarterly', label:'Triwulan',   short:'3bln', x:0.275,  times:4 },
+  { key:'monthly',   label:'Bulanan',    short:'Bln',  x:0.095,  times:12 },
 ];
 
 // STATE
@@ -1469,7 +1496,7 @@ function renderPersonTabs() {
     div.className = 'person-tab' + (i === currentPerson ? ' active' : '') + (isPersonFilled(p) ? ' filled' : '');
     div.dataset.i = i;
     div.onclick = () => { switchPerson(i); };
-    div.innerHTML = '<span class="check">✓</span>' + p.name;
+    div.innerHTML = '<span class="check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>' + p.name;
     tabs.appendChild(div);
   });
 }
@@ -1528,7 +1555,7 @@ function renderPersonForm(i) {
 
   let freqHTML = FREQ.map(f => {
     return '<button class="freq-btn'+(selectedFreq === f.key ? ' active' : '')+'" data-fk="'+f.key+'" onclick="selectFreq(this)">' +
-      '<span class="fn">'+f.label+'</span><span class="fm">'+f.desc+'</span></button>';
+      '<span class="fn">'+f.label+'</span></button>';
   }).join('');
 
   form.innerHTML =
@@ -1579,24 +1606,24 @@ function renderPersonForm(i) {
     '<div class="field-group">' +
       '<label class="field-label">Download Brosur</label>' +
       '<div style="display:flex;gap:8px;flex-wrap:wrap;">' +
-        (!isSyariah ? '<a href="Brosur MiUltimate Health Care (MiUHC).pdf" target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg-card);font-family:\'Plus Jakarta Sans\',sans-serif;font-size:12px;font-weight:500;color:var(--t-secondary);text-decoration:none;transition:all 0.18s;" onmouseover="this.style.borderColor=\'var(--green)\'" onmouseout="this.style.borderColor=\'var(--border)\'">📄 Brosur MiUHC</a>' : '') +
-        (isSyariah ? '<a href="Brosur MiUltimate HealthCare Syariah (4)_translated_eng.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg-card);font-family:\'Plus Jakarta Sans\',sans-serif;font-size:12px;font-weight:500;color:var(--t-secondary);text-decoration:none;transition:all 0.18s;" onmouseover="this.style.borderColor=\'var(--purple)\'" onmouseout="this.style.borderColor=\'var(--border)\'">📄 Brosur MiUHC Syariah</a>' : '') +
+        (!isSyariah ? '<a href="Brosur MiUltimate Health Care (MiUHC).pdf" download target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg-card);font-family:\'Plus Jakarta Sans\',sans-serif;font-size:12px;font-weight:500;color:var(--t-secondary);text-decoration:none;transition:all 0.18s;" onmouseover="this.style.borderColor=\'var(--green)\'" onmouseout="this.style.borderColor=\'var(--border)\'">📄 Brosur MiUHC</a>' : '') +
+        (isSyariah ? '<a href="Brosur MiUltimate HealthCare Syariah (4)_translated_eng.pdf" download target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg-card);font-family:\'Plus Jakarta Sans\',sans-serif;font-size:12px;font-weight:500;color:var(--t-secondary);text-decoration:none;transition:all 0.18s;" onmouseover="this.style.borderColor=\'var(--purple)\'" onmouseout="this.style.borderColor=\'var(--border)\'">📄 Brosur MiUHC Syariah</a>' : '') +
       '</div>' +
     '</div>' +
     '<div class="field-group">' +
       '<label class="field-label">Manfaat yang Dipilih</label>' +
       '<div style="display:flex;flex-direction:column;gap:8px;">' +
         '<label style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:10px;border:1.5px solid '+(benefitRawatInap?'var(--green)':'var(--border)')+';background:'+(benefitRawatInap?'var(--green-pale)':'var(--bg-card)')+';cursor:pointer;transition:all 0.18s;" onclick="toggleBenefit(\'rawatInap\')">' +
-          '<span style="width:20px;height:20px;border-radius:5px;border:1.5px solid '+(benefitRawatInap?'var(--green)':'var(--border)')+';background:'+(benefitRawatInap?'var(--green)':'transparent')+';display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;flex-shrink:0;">'+(benefitRawatInap?'\\u2713':'')+'</span>' +
-          '<span style="font-size:13px;font-weight:500;color:var(--t-secondary);">Rawat Inap <span style="font-size:10px;color:var(--t-muted);">(Perawatan Rumah Sakit)</span></span>' +
+          '<span style="width:22px;height:22px;border-radius:5px;border:1.5px solid '+(benefitRawatInap?'var(--green)':'var(--border)')+';background:'+(benefitRawatInap?'var(--green)':'transparent')+';display:flex;align-items:center;justify-content:center;flex-shrink:0;">'+(benefitRawatInap?'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>':'')+'</span>' +
+          '<span style="font-size:13px;font-weight:600;color:'+(benefitRawatInap?'var(--green-darker)':'var(--t-primary)')+';">Rawat Inap <span style="font-size:10px;font-weight:400;color:var(--t-muted);">(Perawatan Rumah Sakit)</span></span>' +
         '</label>' +
         '<label style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:10px;border:1.5px solid '+(benefitRawatJalan?'var(--green)':'var(--border)')+';background:'+(benefitRawatJalan?'var(--green-pale)':'var(--bg-card)')+';cursor:pointer;transition:all 0.18s;" onclick="toggleBenefit(\'rawatJalan\')">' +
-          '<span style="width:20px;height:20px;border-radius:5px;border:1.5px solid '+(benefitRawatJalan?'var(--green)':'var(--border)')+';background:'+(benefitRawatJalan?'var(--green)':'transparent')+';display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;flex-shrink:0;">'+(benefitRawatJalan?'\\u2713':'')+'</span>' +
-          '<span style="font-size:13px;font-weight:500;color:var(--t-secondary);">Rawat Jalan <span style="font-size:10px;color:var(--t-muted);">(Outpatient)</span></span>' +
+          '<span style="width:22px;height:22px;border-radius:5px;border:1.5px solid '+(benefitRawatJalan?'var(--green)':'var(--border)')+';background:'+(benefitRawatJalan?'var(--green)':'transparent')+';display:flex;align-items:center;justify-content:center;flex-shrink:0;">'+(benefitRawatJalan?'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>':'')+'</span>' +
+          '<span style="font-size:13px;font-weight:600;color:'+(benefitRawatJalan?'var(--green-darker)':'var(--t-primary)')+';">Rawat Jalan <span style="font-size:10px;font-weight:400;color:var(--t-muted);">(Outpatient)</span></span>' +
         '</label>' +
         (isSyariah ? '<label style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:10px;border:1.5px solid '+(benefitRawatGigi?'var(--green)':'var(--border)')+';background:'+(benefitRawatGigi?'var(--green-pale)':'var(--bg-card)')+';cursor:pointer;transition:all 0.18s;" onclick="toggleBenefit(\'rawatGigi\')">' +
-          '<span style="width:20px;height:20px;border-radius:5px;border:1.5px solid '+(benefitRawatGigi?'var(--green)':'var(--border)')+';background:'+(benefitRawatGigi?'var(--green)':'transparent')+';display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;flex-shrink:0;">'+(benefitRawatGigi?'\\u2713':'')+'</span>' +
-          '<span style="font-size:13px;font-weight:500;color:var(--t-secondary);">Rawat Gigi <span style="font-size:10px;color:var(--t-muted);">(Dental Care)</span></span>' +
+          '<span style="width:22px;height:22px;border-radius:5px;border:1.5px solid '+(benefitRawatGigi?'var(--green)':'var(--border)')+';background:'+(benefitRawatGigi?'var(--green)':'transparent')+';display:flex;align-items:center;justify-content:center;flex-shrink:0;">'+(benefitRawatGigi?'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>':'')+'</span>' +
+          '<span style="font-size:13px;font-weight:600;color:'+(benefitRawatGigi?'var(--green-darker)':'var(--t-primary)')+';">Rawat Gigi <span style="font-size:10px;font-weight:400;color:var(--t-muted);">(Dental Care)</span></span>' +
         '</label>' : '') +
       '</div>' +
     '</div>' +
@@ -2348,5 +2375,11 @@ document.addEventListener('DOMContentLoaded', () => {
   mutationObserver.observe(document.querySelector('.app'), { childList: true, subtree: true });
 });
 </script>
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a class="wa-float-btn" href="https://wa.me/6287781896087?text=Halo%20Pak%20Petrus%2C%20saya%20mau%20tanya%20soal%20Askes%20Manulife" target="_blank" rel="noopener" aria-label="Chat WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
 </body>
 </html>
