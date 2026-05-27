@@ -1,0 +1,2154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalkulator Premi MiUHC - Petrus Jakub | Manulife</title>
+<meta name="description" content="Hitung estimasi premi Manulife MiUltimate Health Care (MiUHC) untuk diri sendiri atau keluarga. Dipandu langsung oleh Petrus Jakub, Financial Consultant Manulife.">
+<meta name="author" content="Petrus Jakub">
+<meta name="keywords" content="asuransi kesehatan, Manulife, MiUHC, MiUltimate Health Care, kalkulator premi, asuransi keluarga">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://premimynewlife.netlify.com">
+<meta property="og:title" content="Cek Premi Asuransi Kesehatan MiUHC">
+<meta property="og:description" content="Kalkulator premi Manulife MiUHC 2025. Isi data, langsung tahu angkanya. Dipandu Petrus Jakub, Financial Consultant Manulife.">
+<meta property="og:image" content="https://premimynewlife.netlify.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="id_ID">
+<meta property="og:site_name" content="Kalkulator Premi MiUHC - Petrus Jakub">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cek Premi Asuransi Kesehatan MiUHC">
+<meta name="twitter:description" content="Kalkulator premi Manulife MiUHC 2025. Isi data, langsung tahu angkanya.">
+<meta name="twitter:image" content="https://premimynewlife.netlify.com/og-image.png">
+<meta name="theme-color" content="#004D2C">
+<meta name="theme-color" content="#f0faf4" media="(prefers-color-scheme: light)">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0a1628;
+  --paper: #f0faf4;
+  --paper2: #e4f5ea;
+  --green: #00A758;
+  --green-dark: #006B3F;
+  --green-darker: #004D2C;
+  --green-pale: #d4f5e2;
+  --purple: #7C3AED;
+  --purple-dark: #6B21A8;
+  --purple-light: #9333EA;
+  --purple-pale: #ede9fe;
+  --gray: #5a6b60;
+  --border: rgba(0,107,63,0.14);
+  --shadow: 0 4px 24px rgba(0,77,44,0.08);
+  --shadow-lg: 0 12px 48px rgba(0,77,44,0.14);
+  --t-primary: #0a1628;
+  --t-secondary: #1a3028;
+  --t-muted: #5a6b60;
+  --t-faint: #8a9a90;
+  --bg-input: #ffffff;
+  --bg-card: rgba(255,255,255,0.85);
+  --border-input: rgba(0,107,63,0.16);
+  --dc-t1: #e8fff0;
+  --dc-t2: rgba(232,255,240,0.75);
+  --dc-t3: rgba(232,255,240,0.5);
+  --dc-t4: rgba(232,255,240,0.28);
+  --dc-border: rgba(232,255,240,0.1);
+  --dc-input: rgba(232,255,240,0.07);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0a1a12;
+    --paper2: #0f2218;
+    --border: rgba(255,255,255,0.1);
+    --t-primary: #e8fff0;
+    --t-secondary: rgba(232,255,240,0.82);
+    --t-muted: rgba(232,255,240,0.55);
+    --t-faint: rgba(232,255,240,0.32);
+    --bg-input: rgba(255,255,255,0.07);
+    --bg-card: rgba(255,255,255,0.04);
+    --border-input: rgba(255,255,255,0.13);
+  }
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--paper);
+  color: var(--t-primary);
+  min-height: 100vh;
+  padding: 0;
+  background-image:
+    radial-gradient(ellipse at 15% 0%, rgba(0,167,88,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 100%, rgba(124,58,237,0.06) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 50%, rgba(212,245,226,0.2) 0%, transparent 70%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-image:
+      radial-gradient(ellipse at 15% 0%, rgba(0,167,88,0.05) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 100%, rgba(124,58,237,0.04) 0%, transparent 55%);
+  }
+}
+
+/* Ambient background glow */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 20%, rgba(0,167,88,0.03) 0%, transparent 50%),
+              radial-gradient(circle at 70% 80%, rgba(124,58,237,0.03) 0%, transparent 50%);
+  animation: ambientFloat 20s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes ambientFloat {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(2%, -1%) rotate(1deg); }
+  66% { transform: translate(-1%, 2%) rotate(-1deg); }
+}
+
+/* Fade-in on scroll animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: linear-gradient(135deg, var(--green-darker) 0%, var(--ink) 100%);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+  backdrop-filter: blur(12px);
+}
+.site-header .brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  color: #4ade80;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+}
+.site-header .tagline {
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 1px;
+}
+.site-header .trust-strip {
+  font-size: 10px;
+  color: rgba(255,255,255,0.4);
+  margin-top: 4px;
+  letter-spacing: 0.05em;
+}
+.site-header .trust-strip span {
+  color: rgba(255,255,255,0.65);
+  font-weight: 500;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.agent-ig-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px;
+  padding: 6px 12px 6px 8px;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.agent-ig-btn:hover {
+  background: rgba(74,222,128,0.15);
+  border-color: rgba(74,222,128,0.35);
+}
+.agent-ig-avatar {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--green) 0%, var(--purple) 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  flex-shrink: 0;
+}
+.agent-ig-info { display: flex; flex-direction: column; }
+.agent-ig-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.2;
+}
+.agent-ig-handle {
+  font-size: 9px;
+  color: rgba(255,255,255,0.4);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.ig-icon { width: 10px; height: 10px; flex-shrink: 0; }
+
+/* ── MAIN WRAPPER ── */
+.app {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px 16px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── STEP INDICATOR ── */
+.steps-bar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 36px;
+}
+.step-dot {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: var(--paper2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--t-muted);
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+.step-dot.active {
+  border-color: var(--green);
+  background: var(--green);
+  color: #fff;
+  box-shadow: 0 0 12px rgba(0,167,88,0.4);
+}
+.step-dot.done {
+  border-color: var(--green);
+  background: var(--green-pale);
+  color: var(--green-dark);
+}
+.step-line {
+  flex: 1;
+  height: 2px;
+  background: var(--border);
+  transition: background 0.3s;
+}
+.step-line.done { background: var(--green); }
+
+/* ── SCREEN ── */
+.screen { display: none; }
+.screen.active {
+  display: block;
+  animation: fadeUp 0.35s ease-out;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SECTION TITLE ── */
+.section-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 6px;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 5vw, 36px);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--t-primary);
+  margin-bottom: 8px;
+}
+.section-title em {
+  background: linear-gradient(135deg, var(--green) 0%, var(--purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.section-desc {
+  font-size: 14px;
+  color: var(--t-muted);
+  margin-bottom: 28px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* ── PERSON COUNT SELECTOR ── */
+.count-selector {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.count-btn {
+  width: 72px; height: 72px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  background: var(--bg-card);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 4px;
+  transition: all 0.18s;
+  box-shadow: var(--shadow);
+}
+.count-btn:hover {
+  border-color: var(--green);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+.count-btn.active {
+  border-color: var(--green);
+  background: var(--green-pale);
+  box-shadow: 0 0 16px rgba(0,167,88,0.2);
+}
+.count-btn .num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--t-primary);
+  line-height: 1;
+}
+.count-btn.active .num { color: var(--green-darker); }
+.count-btn .lbl {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--t-muted);
+}
+
+/* ── PERSON TABS ── */
+.person-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 24px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+.person-tabs::-webkit-scrollbar { display: none; }
+.person-tab {
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  backdrop-filter: blur(8px);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--t-muted);
+  cursor: pointer;
+  transition: all 0.18s;
+  display: flex; align-items: center; gap: 6px;
+}
+.person-tab:hover { border-color: var(--green); }
+.person-tab.active {
+  border-color: var(--green);
+  background: var(--green-pale);
+  color: var(--green-darker);
+  font-weight: 600;
+}
+.person-tab .check {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  font-size: 9px;
+  display: none;
+  align-items: center; justify-content: center;
+}
+.person-tab.filled .check { display: flex; }
+
+/* ── FORM CARD ── */
+.form-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+  margin-bottom: 16px;
+  color: var(--t-primary);
+  backdrop-filter: blur(12px);
+}
+
+.field-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--t-muted);
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* ── NICKNAME INPUT ── */
+.name-input-wrap {
+  border: 1.5px solid var(--border-input);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+  background: var(--bg-input);
+}
+.name-input-wrap:focus-within { border-color: var(--green); }
+.name-input-wrap input {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  color: var(--t-primary);
+}
+
+/* ── AGE ── */
+.age-row {
+  display: flex;
+  align-items: center;
+  background: var(--bg-input);
+  border: 1.5px solid var(--border-input);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.age-row:focus-within { border-color: var(--green); }
+.age-btn {
+  background: none; border: none;
+  width: 52px; height: 52px;
+  font-size: 22px;
+  color: var(--green);
+  cursor: pointer;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+.age-btn:hover { background: var(--green-pale); }
+.age-number-input {
+  flex: 1; background: none; border: none; outline: none;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  text-align: center;
+  color: var(--t-primary);
+  -moz-appearance: textfield;
+}
+.age-number-input::-webkit-outer-spin-button,
+.age-number-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+/* ── TOGGLES ── */
+.toggle-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.toggle-btn {
+  padding: 11px 8px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--t-secondary);
+  cursor: pointer;
+  transition: all 0.18s;
+  text-align: center;
+}
+.toggle-btn:hover { border-color: var(--green); background: var(--green-pale); }
+.toggle-btn.active {
+  background: var(--green-pale);
+  border-color: var(--green);
+  color: var(--green-darker);
+  font-weight: 600;
+}
+.plan-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.plan-btn {
+  padding: 10px 10px 8px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  backdrop-filter: blur(8px);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.18s;
+  text-align: left;
+  line-height: 1.3;
+}
+.plan-btn:hover { border-color: var(--green); background: var(--green-pale); }
+.plan-btn.active {
+  background: var(--green-pale);
+  border-color: var(--green);
+  box-shadow: 0 0 12px rgba(0,167,88,0.15);
+}
+.plan-btn .pt { font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--t-faint); display: block; margin-bottom: 3px; }
+.plan-btn .pn { font-size: 13px; font-weight: 700; color: var(--t-primary); display: block; margin-bottom: 5px; }
+.plan-btn.active .pn { color: var(--green-darker); }
+.plan-btn .p-tags { display: flex; flex-wrap: wrap; gap: 3px; }
+.plan-btn .p-tag {
+  font-size: 9px;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.plan-btn .p-tag.bed  { background: rgba(0,107,63,0.08); color: var(--green-dark); }
+.plan-btn .p-tag.area { background: rgba(124,58,237,0.08); color: var(--purple-dark); }
+.plan-btn .p-tag.ded  { background: rgba(124,58,237,0.06); color: var(--purple); }
+.plan-btn .p-tag.noded { background: rgba(0,167,88,0.10); color: var(--green-dark); }
+.plan-btn.active .p-tag.bed  { background: rgba(0,107,63,0.14); }
+.plan-btn.active .p-tag.area { background: rgba(124,58,237,0.12); }
+.plan-btn.active .p-tag.ded  { background: rgba(124,58,237,0.10); }
+.plan-btn.active .p-tag.noded { background: rgba(0,167,88,0.18); }
+
+.field-group { margin-bottom: 20px; }
+.field-group:last-child { margin-bottom: 0; }
+
+/* ── BIRTHDATE INPUT ── */
+.birthdate-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.birthdate-row {
+  display: flex;
+  align-items: center;
+  background: var(--paper);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+  padding: 0 14px;
+  height: 52px;
+  gap: 8px;
+}
+.birthdate-row:focus-within { border-color: var(--green); }
+.birthdate-row input[type="date"] {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  color: var(--t-primary);
+  cursor: pointer;
+}
+.birthdate-row .bd-icon { font-size: 16px; flex-shrink: 0; }
+.age-display-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.age-display-box {
+  background: var(--green-pale);
+  border: 1.5px solid var(--green);
+  border-radius: 10px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+.age-display-box .age-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--green-darker);
+  line-height: 1;
+}
+.age-display-box .age-lbl {
+  font-size: 12px;
+  color: var(--green-dark);
+}
+@media (prefers-color-scheme: dark) {
+  .age-display-box { background: rgba(0,167,88,0.2); border-color: var(--green); }
+  .age-display-box .age-num { color: #4ade80; }
+  .age-display-box .age-lbl { color: rgba(74,222,128,0.7); }
+  .birthdate-row input[type="date"] { color: var(--t-primary); color-scheme: dark; }
+  .birthdate-row { background: var(--bg-input); border-color: var(--border-input); }
+}
+
+.freq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 8px;
+}
+.freq-btn {
+  padding: 10px 4px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.18s;
+  text-align: center;
+  line-height: 1.3;
+}
+.freq-btn:hover { border-color: var(--green); background: var(--green-pale); }
+.freq-btn.active {
+  background: var(--green-pale);
+  border-color: var(--green);
+}
+.freq-btn .fn { font-size: 12px; font-weight: 600; color: var(--t-primary); display: block; }
+.freq-btn.active .fn { color: var(--green-darker); }
+.freq-btn .fm { font-size: 9px; color: var(--t-muted); display: block; margin-top: 2px; }
+
+/* ── INLINE RESULT ── */
+.inline-result {
+  margin-top: 16px;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--green-darker) 0%, var(--ink) 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid rgba(74,222,128,0.2);
+}
+.ir-left .ir-annual {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  color: #4ade80;
+  font-weight: 600;
+}
+.ir-left .ir-monthly {
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  margin-top: 2px;
+}
+.ir-right {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  text-align: right;
+  line-height: 1.5;
+}
+
+/* ── BUTTONS ── */
+.btn-primary {
+  width: 100%;
+  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-darker) 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.05em;
+}
+.btn-primary:hover { background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%); box-shadow: 0 4px 16px rgba(0,167,88,0.3); }
+.btn-primary:active { transform: scale(0.99); }
+.btn-primary.gold {
+  background: linear-gradient(135deg, var(--green) 0%, var(--purple) 100%);
+  color: #fff;
+}
+.btn-primary.gold:hover { box-shadow: 0 4px 20px rgba(0,167,88,0.35); }
+
+.btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+.btn-secondary {
+  flex-shrink: 0;
+  padding: 16px 20px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  color: var(--t-secondary);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-secondary:hover { border-color: var(--green); color: var(--t-primary); background: var(--green-pale); }
+
+/* ── SAVINGS RECOMMENDATION ── */
+.savings-banner {
+  background: linear-gradient(135deg, #0a2818 0%, #0f3520 100%);
+  border: 1.5px solid rgba(74,222,128,0.35);
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 16px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.savings-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+.savings-body { flex: 1; }
+.savings-title { font-size: 13px; font-weight: 700; color: #4ade80; margin-bottom: 4px; }
+.savings-desc { font-size: 12px; color: var(--dc-t2); line-height: 1.6; margin-bottom: 10px; }
+.savings-amount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #4ade80;
+}
+.savings-switch-btn {
+  display: inline-block;
+  margin-top: 10px;
+  background: rgba(74,222,128,0.15);
+  border: 1px solid rgba(74,222,128,0.3);
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4ade80;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.savings-switch-btn:hover { background: rgba(74,222,128,0.25); }
+
+.summary-cards { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+.summary-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  gap: 12px;
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s;
+}
+.summary-card:hover { transform: translateY(-2px); }
+.sc-left { flex: 1; }
+.sc-name { font-weight: 600; font-size: 15px; color: var(--t-primary); margin-bottom: 3px; }
+.sc-detail { font-size: 12px; color: var(--t-muted); line-height: 1.5; }
+.sc-right { text-align: right; flex-shrink: 0; }
+.sc-amount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--green);
+  line-height: 1;
+}
+.sc-monthly { font-size: 11px; color: var(--t-muted); margin-top: 2px; }
+
+.total-bar {
+  background: linear-gradient(135deg, var(--green-darker) 0%, var(--ink) 100%);
+  border-radius: 14px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  border: 1px solid rgba(74,222,128,0.2);
+}
+.tb-label { font-size: 12px; color: var(--dc-t3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+.tb-amount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  color: #4ade80;
+  font-weight: 600;
+}
+.tb-right { text-align: right; }
+.tb-right .tb-mo { font-size: 12px; color: var(--dc-t4); }
+.tb-right .tb-mo-amt {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  color: var(--dc-t2);
+}
+
+.action-row { display: flex; gap: 10px; }
+.action-row .btn-primary { flex: 1; }
+
+.btn-wa {
+  width: 100%;
+  background: #25D366;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+  box-shadow: 0 4px 16px rgba(37,211,102,0.3);
+}
+.btn-wa:hover { background: #1ebe5d; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,211,102,0.4); }
+.btn-wa:active { transform: scale(0.99); }
+
+/* ── COLLAPSIBLE LIFE CARD ── */
+.life-collapse-trigger {
+  background: linear-gradient(135deg, #1a0f30 0%, #1e1050 60%, #0a2818 100%);
+  border: 1.5px solid rgba(124,58,237,0.35);
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-top: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.life-collapse-trigger::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(124,58,237,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.life-collapse-trigger:hover {
+  border-color: rgba(124,58,237,0.55);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 32px rgba(124,58,237,0.15);
+}
+.lct-left { flex: 1; }
+.lct-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(124,58,237,0.18);
+  border: 1px solid rgba(124,58,237,0.35);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #a78bfa;
+  margin-bottom: 8px;
+}
+.lct-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.lct-subtitle { font-size: 11px; color: var(--dc-t3); line-height: 1.5; }
+.lct-subtitle strong { color: var(--dc-t2); }
+.lct-arrow {
+  font-size: 20px;
+  color: #a78bfa;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+.lct-arrow.open { transform: rotate(180deg); }
+
+.life-collapse-body {
+  display: none;
+  background: var(--ink);
+  border: 1.5px solid rgba(124,58,237,0.15);
+  border-top: none;
+  border-radius: 0 0 16px 16px;
+  padding: 20px;
+  margin-top: -6px;
+  animation: fadeUp 0.25s ease-out;
+}
+.life-collapse-body.open { display: block; }
+
+.ua-input-wrap { position: relative; margin-top: 14px; }
+.ua-input-wrap .ua-prefix {
+  position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+  font-size: 13px; font-weight: 600; color: var(--dc-t3); pointer-events: none;
+}
+.ua-input-wrap input {
+  width: 100%;
+  background: var(--dc-input);
+  border: 1.5px solid var(--dc-border);
+  border-radius: 10px;
+  padding: 12px 14px 12px 56px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  color: var(--dc-t1);
+  outline: none;
+  transition: border-color 0.2s;
+  -moz-appearance: textfield;
+}
+.ua-input-wrap input:focus { border-color: var(--purple); }
+.ua-input-wrap input::-webkit-outer-spin-button,
+.ua-input-wrap input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.ua-quick-btns { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.ua-quick-btn {
+  padding: 5px 10px; border-radius: 7px;
+  border: 1px solid var(--dc-border); background: var(--dc-input);
+  font-size: 11px; color: var(--dc-t3); cursor: pointer;
+  transition: all 0.15s; font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.ua-quick-btn:hover { border-color: var(--purple); color: #a78bfa; background: rgba(124,58,237,0.1); }
+
+.life-pref-section {
+  background: var(--dc-input);
+  border: 1px solid var(--dc-border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.life-pref-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--dc-t4); margin-bottom: 8px;
+}
+.life-toggle-row { display: flex; gap: 7px; flex-wrap: wrap; }
+.life-opt-btn {
+  padding: 8px 14px; border-radius: 8px;
+  border: 1.5px solid var(--dc-border); background: var(--dc-input);
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px; font-weight: 500;
+  color: var(--dc-t3); cursor: pointer; transition: all 0.15s;
+}
+.life-opt-btn:hover { border-color: rgba(124,58,237,0.4); color: var(--dc-t1); }
+.life-opt-btn.active {
+  background: rgba(124,58,237,0.2); border-color: var(--purple); color: #a78bfa; font-weight: 600;
+}
+.life-checkbox-row {
+  display: flex; align-items: flex-start; gap: 12px; margin-top: 16px;
+  cursor: pointer; padding: 10px; border-radius: 10px;
+  border: 1.5px solid var(--dc-border); background: rgba(0,0,0,0.1); transition: all 0.15s;
+}
+.life-checkbox-row:hover { border-color: rgba(124,58,237,0.3); }
+.life-checkbox-row.checked { border-color: var(--purple); background: rgba(124,58,237,0.08); }
+.life-checkbox {
+  width: 20px; height: 20px; border-radius: 5px;
+  border: 1.5px solid var(--dc-t4); background: rgba(0,0,0,0.15);
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  margin-top: 1px; transition: all 0.15s; font-size: 12px; color: #a78bfa;
+}
+.life-checkbox-row.checked .life-checkbox { background: var(--purple); border-color: var(--purple); color: #fff; }
+.life-checkbox-label { display: flex; flex-direction: column; gap: 2px; font-size: 12px; color: var(--dc-t3); line-height: 1.5; }
+
+.life-person-selector { margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--dc-border); }
+.life-person-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.life-person-chip {
+  display: flex; align-items: center; gap: 6px; padding: 7px 12px;
+  border-radius: 20px; border: 1.5px solid var(--dc-border); background: var(--dc-input);
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px; font-weight: 500;
+  color: var(--dc-t3); cursor: pointer; transition: all 0.15s; user-select: none;
+}
+.life-person-chip:hover { border-color: rgba(124,58,237,0.4); color: var(--dc-t1); }
+.life-person-chip.selected { background: rgba(124,58,237,0.2); border-color: var(--purple); color: #a78bfa; font-weight: 600; }
+.life-person-chip .chip-check {
+  width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid var(--dc-t4);
+  display: flex; align-items: center; justify-content: center; font-size: 9px; flex-shrink: 0; transition: all 0.15s;
+}
+.life-person-chip.selected .chip-check { background: var(--purple); border-color: var(--purple); color: #fff; }
+
+.btn-life-wa {
+  width: 100%;
+  background: rgba(124,58,237,0.15);
+  border: 1.5px solid rgba(124,58,237,0.4);
+  border-radius: 12px; padding: 14px;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; font-weight: 700;
+  color: #a78bfa; cursor: pointer; transition: all 0.2s; letter-spacing: 0.05em;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn-life-wa:hover { background: rgba(124,58,237,0.25); border-color: var(--purple-light); }
+
+/* ── WA MODAL ── */
+.wa-modal-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.65); backdrop-filter: blur(4px);
+  z-index: 1000; align-items: flex-end; justify-content: center;
+  padding: 0 0 env(safe-area-inset-bottom, 0);
+}
+.wa-modal-overlay.open { display: flex; animation: fadeIn 0.2s ease-out; }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+.wa-modal {
+  background: #0a1628; border: 1px solid rgba(74,222,128,0.25);
+  border-radius: 24px 24px 0 0; padding: 28px 24px 36px;
+  width: 100%; max-width: 540px;
+  animation: slideUp 0.28s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.wa-modal-emoji { font-size: 36px; text-align: center; margin-bottom: 12px; }
+.wa-modal-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600;
+  color: #fff; text-align: center; margin-bottom: 8px; line-height: 1.2;
+}
+.wa-modal-desc { font-size: 13px; color: var(--dc-t3); text-align: center; line-height: 1.6; margin-bottom: 22px; }
+.wa-modal-btn-yes {
+  width: 100%; background: #25D366; color: #fff; border: none; border-radius: 14px; padding: 16px;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 700;
+  cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin-bottom: 10px; transition: background 0.15s;
+}
+.wa-modal-btn-yes:hover { background: #1ebe5d; }
+.wa-modal-btn-no {
+  width: 100%; background: var(--dc-input); border: 1px solid var(--dc-border); border-radius: 14px; padding: 14px;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px;
+  color: var(--dc-t3); cursor: pointer; transition: all 0.15s;
+}
+.wa-modal-btn-no:hover { color: var(--dc-t1); background: rgba(255,255,255,0.1); }
+
+/* ── TOAST ── */
+.toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
+  background: #1a0f2a; border: 1.5px solid rgba(124,58,237,0.5); border-radius: 14px;
+  padding: 14px 20px; display: flex; align-items: center; gap: 10px;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; color: #c4b5fd;
+  max-width: 320px; width: calc(100% - 32px); z-index: 2000;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s; opacity: 0; pointer-events: none;
+}
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto; }
+.toast .toast-icon { font-size: 18px; flex-shrink: 0; }
+.toast .toast-msg { flex: 1; line-height: 1.5; }
+.toast .toast-close { background: none; border: none; color: rgba(196,181,253,0.5); font-size: 16px; cursor: pointer; padding: 0 0 0 8px; flex-shrink: 0; }
+
+/* ── FIELD ERROR ── */
+.field-error {
+  display: flex; align-items: center; gap: 6px; margin-top: 6px;
+  font-size: 11px; color: #ef4444; font-weight: 500; animation: fadeUp 0.2s ease-out;
+}
+.field-error .fe-icon { font-size: 12px; flex-shrink: 0; }
+
+.footer-note { text-align: center; font-size: 11px; color: var(--t-faint); margin-top: 28px; }
+
+@keyframes pop {
+  0% { transform: scale(0.93); opacity: 0.5; }
+  60% { transform: scale(1.04); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.pop { animation: pop 0.28s ease-out forwards; }
+
+/* ── NEEDS ASSESSMENT ── */
+.assess-q { margin-bottom: 28px; }
+.assess-q-title { font-size: 15px; font-weight: 600; color: var(--t-primary); margin-bottom: 4px; line-height: 1.4; }
+.assess-q-sub { font-size: 12px; color: var(--t-muted); margin-bottom: 12px; line-height: 1.5; }
+.assess-opts { display: flex; flex-direction: column; gap: 8px; }
+.assess-opt {
+  background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 12px;
+  padding: 13px 16px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px;
+  color: var(--t-secondary); cursor: pointer; transition: all 0.18s; text-align: left;
+  display: flex; align-items: center; gap: 10px; box-shadow: 0 1px 4px rgba(0,77,44,0.06);
+  backdrop-filter: blur(8px);
+}
+.assess-opt:hover { border-color: var(--green); background: var(--green-pale); color: var(--green-darker); }
+.assess-opt.selected {
+  background: var(--green-pale); border-color: var(--green); color: var(--green-darker);
+  font-weight: 600; box-shadow: 0 2px 12px rgba(0,167,88,0.2);
+}
+.assess-opt .ao-icon { font-size: 18px; flex-shrink: 0; }
+
+.assess-progress { display: flex; gap: 6px; margin-bottom: 28px; }
+.assess-dot { height: 4px; flex: 1; border-radius: 2px; background: var(--border); transition: background 0.3s; }
+.assess-dot.done { background: var(--green); }
+.assess-dot.active { background: rgba(0,167,88,0.45); }
+
+/* Recommendation card */
+.reco-card {
+  background: linear-gradient(135deg, var(--green-darker) 0%, #1a0f30 100%);
+  border: 1.5px solid rgba(74,222,128,0.3); border-radius: 18px; padding: 24px 20px;
+  margin-bottom: 20px; position: relative; overflow: hidden;
+}
+.reco-card::before {
+  content: ''; position: absolute; top: -20px; right: -20px; width: 100px; height: 100px;
+  border-radius: 50%; background: radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%); pointer-events: none;
+}
+.reco-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #4ade80; margin-bottom: 6px; }
+.reco-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 8px; line-height: 1.2; }
+.reco-reason { font-size: 12px; color: var(--dc-t2); line-height: 1.7; margin-bottom: 16px; }
+.reco-reason strong { color: var(--dc-t1); }
+.reco-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.reco-tag {
+  font-size: 10px; padding: 4px 10px; border-radius: 20px;
+  background: rgba(74,222,128,0.15); border: 1px solid rgba(74,222,128,0.3);
+  color: #4ade80; font-weight: 500;
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div>
+    <div class="brand">Manulife · MiUltimate Health Care</div>
+    <div class="tagline">Premium Calculator 2025</div>
+    <div class="trust-strip"><span>Petrus Jakub</span> · <span>Financial Consultant</span> · Manulife Indonesia</div>
+  </div>
+  <div class="header-right">
+    <a class="agent-ig-btn" href="https://wa.me/6287781896087" target="_blank" rel="noopener">
+      <div class="agent-ig-avatar">PJ</div>
+      <div class="agent-ig-info">
+        <span class="agent-ig-name">Petrus Jakub</span>
+        <span class="agent-ig-handle">
+          <svg class="ig-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="#25D366"/>
+            <path d="M16.5 13.5c-.3-.15-1.7-.85-2-.95-.27-.1-.46-.15-.66.15-.2.3-.75.95-.92 1.14-.17.2-.34.22-.63.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.74-1.64-2.04-.17-.3-.02-.46.13-.6.13-.13.3-.34.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.66-1.6-.9-2.2-.24-.57-.49-.5-.66-.5-.17 0-.37 0-.56 0-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35" fill="white"/>
+          </svg>
+          WhatsApp
+        </span>
+      </div>
+    </a>
+  </div>
+</header>
+
+<div class="app">
+
+  <!-- STEP INDICATOR -->
+  <div class="steps-bar" id="stepsBar">
+    <div class="step-dot active" id="sd0">1</div>
+    <div class="step-line" id="sl0"></div>
+    <div class="step-dot" id="sd1">2</div>
+    <div class="step-line" id="sl1"></div>
+    <div class="step-dot" id="sd2">3</div>
+    <div class="step-line" id="sl2"></div>
+    <div class="step-dot" id="sd3">✓</div>
+  </div>
+
+  <!-- SCREEN 0: NEEDS ASSESSMENT -->
+  <div class="screen active" id="screen-assess">
+    <div class="section-eyebrow">Langkah 1 dari 3</div>
+    <h1 class="section-title">Kenali dulu<br><em>kebutuhan proteksimu</em></h1>
+    <p class="section-desc">5 pertanyaan singkat -- Petrus Jakub bantu rekomendasikan plan MiUHC yang paling tepat.</p>
+
+    <div class="reveal" style="display:flex;align-items:center;gap:10px;margin-bottom:20px;padding:12px 14px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;backdrop-filter:blur(8px);">
+      <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--green) 0%,var(--purple) 100%);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;color:#fff;flex-shrink:0;">PJ</div>
+      <div>
+        <div style="font-size:12px;font-weight:600;color:var(--t-primary);">Petrus Jakub</div>
+        <div style="font-size:11px;color:var(--t-muted);">Financial Consultant · Manulife Indonesia</div>
+      </div>
+    </div>
+
+    <div class="assess-progress" id="assessProgress">
+      <div class="assess-dot active" id="ap0"></div>
+      <div class="assess-dot" id="ap1"></div>
+      <div class="assess-dot" id="ap2"></div>
+      <div class="assess-dot" id="ap3"></div>
+      <div class="assess-dot" id="ap4"></div>
+    </div>
+
+    <div id="assessQuestion"></div>
+
+    <div class="btn-row" style="margin-top:24px;">
+      <button class="btn-secondary" id="assessBackBtn" onclick="assessBack()" style="display:none;">← Kembali</button>
+      <button class="btn-primary gold" id="assessNextBtn" onclick="assessNext()" style="flex:1;opacity:0.4;pointer-events:none;">Lanjut →</button>
+    </div>
+    <button onclick="skipAssessment()" style="width:100%;margin-top:10px;background:none;border:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;color:var(--t-muted);cursor:pointer;padding:8px;transition:color 0.15s;" onmouseover="this.style.color='var(--green)'" onmouseout="this.style.color='var(--t-muted)'">
+      Lewati -- langsung ke kalkulator premi →
+    </button>
+  </div>
+
+  <!-- SCREEN 0b: RECOMMENDATION -->
+  <div class="screen" id="screen-reco">
+    <div class="section-eyebrow">Rekomendasi Petrus Jakub</div>
+    <h1 class="section-title">Ini yang paling<br><em>cocok untukmu</em></h1>
+    <p class="section-desc">Berdasarkan profil yang kamu isi. Kamu tetap bisa sesuaikan nanti.</p>
+    <div id="recoCard"></div>
+    <button class="btn-primary gold" onclick="goToCount()" style="margin-top:4px;">Lanjut Hitung Premi →</button>
+    <button class="btn-secondary" onclick="goTo('assess'); currentAssessQ=0; renderAssessQ();" style="margin-top:10px;width:100%;text-align:center;">← Isi Ulang Pertanyaan</button>
+  </div>
+
+  <!-- SCREEN 1: HOW MANY PERSONS -->
+  <div class="screen" id="screen-count">
+    <div class="section-eyebrow">Langkah 2 dari 3</div>
+    <h1 class="section-title">Berapa orang yang ingin<br><em>dihitung preminya?</em></h1>
+    <p class="section-desc">Maksimal 5 orang -- cocok untuk keluarga lengkap.</p>
+
+    <div class="count-selector">
+      <button class="count-btn active" data-n="1" onclick="selectCount(this)">
+        <span class="num">1</span><span class="lbl">Orang</span>
+      </button>
+      <button class="count-btn" data-n="2" onclick="selectCount(this)">
+        <span class="num">2</span><span class="lbl">Orang</span>
+      </button>
+      <button class="count-btn" data-n="3" onclick="selectCount(this)">
+        <span class="num">3</span><span class="lbl">Orang</span>
+      </button>
+      <button class="count-btn" data-n="4" onclick="selectCount(this)">
+        <span class="num">4</span><span class="lbl">Orang</span>
+      </button>
+      <button class="count-btn" data-n="5" onclick="selectCount(this)">
+        <span class="num">5</span><span class="lbl">Orang</span>
+      </button>
+    </div>
+
+    <div class="btn-row" style="margin-top:32px;">
+      <button class="btn-primary gold" onclick="goToPersons()">Lanjut →</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 2: PERSON INPUTS -->
+  <div class="screen" id="screen-persons">
+    <div class="section-eyebrow">Langkah 3 dari 3</div>
+    <h1 class="section-title">Isi data<br><em>setiap orang</em></h1>
+    <p class="section-desc">Klik tab nama untuk berpindah antar peserta.</p>
+
+    <div class="person-tabs" id="personTabs"></div>
+
+    <div class="form-card" id="personForm"></div>
+
+    <div class="btn-row">
+      <button class="btn-secondary" onclick="goTo('count')">← Kembali</button>
+      <button class="btn-primary gold" style="flex:1;" onclick="goToSummary()">Lihat Ringkasan →</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 3: SUMMARY -->
+  <div class="screen" id="screen-summary">
+    <div class="section-eyebrow">Ringkasan</div>
+    <h1 class="section-title">Estimasi Premi<br><em>Keluarga Anda</em></h1>
+
+    <div id="savingsBanner"></div>
+    <div class="summary-cards" id="summaryCards"></div>
+    <div class="total-bar" id="totalBar"></div>
+
+    <div class="action-row">
+      <button class="btn-primary" onclick="copyAll()">📋 Salin Ringkasan</button>
+      <button class="btn-secondary" onclick="goTo('persons')">← Edit</button>
+    </div>
+
+    <!-- LIFE INSURANCE COLLAPSIBLE -->
+    <div class="life-collapse-trigger" onclick="toggleLifeCard()" id="lifeCardTrigger">
+      <div class="lct-left">
+        <div class="lct-badge">✨ Eksklusif Manulife</div>
+        <div class="lct-title">Proteksi Jiwa dengan<br>Bayar Cuma <em>5-10 Tahun</em></div>
+        <div class="lct-subtitle">Premi kompetitif · Proteksi hingga usia 100 · <strong>Nilai tunai tersedia</strong><br>Tap untuk lihat detail & kirim preferensi →</div>
+      </div>
+      <div class="lct-arrow" id="lifeCardArrow">⌄</div>
+    </div>
+
+    <div class="life-collapse-body" id="lifeCardBody" style="display:none;" onclick="event.stopPropagation()">
+      <div class="life-inner-body" style="margin-bottom:16px;font-size:12px;color:var(--dc-t3);line-height:1.7;">
+        Asuransi kesehatan melindungi saat <strong style="color:var(--dc-t1);">sakit</strong>. Asuransi jiwa melindungi <strong style="color:var(--dc-t1);">penghasilan keluarga</strong> jika Anda tidak lagi bisa bekerja -- keduanya saling melengkapi.<br><br>
+        Manulife menawarkan asuransi jiwa tradisional dengan premi kompetitif, masa bayar singkat, dan proteksi jangka panjang.
+      </div>
+
+      <div class="life-pref-section">
+        <div id="lifePersonSelector"></div>
+
+        <div class="life-pref-label">Masa Bayar Premi</div>
+        <div class="life-toggle-row" id="lifeMasaBayar">
+          <button class="life-opt-btn" data-val="5" onclick="selectLifeOpt('lifeMasaBayar', this)">5 Tahun</button>
+          <button class="life-opt-btn" data-val="10" onclick="selectLifeOpt('lifeMasaBayar', this)">10 Tahun</button>
+        </div>
+
+        <div class="life-pref-label" style="margin-top:14px;">Masa Proteksi hingga Usia</div>
+        <div class="life-toggle-row" id="lifeMasaProteksi">
+          <button class="life-opt-btn" data-val="55" onclick="selectLifeOpt('lifeMasaProteksi', this)">55 Thn</button>
+          <button class="life-opt-btn" data-val="60" onclick="selectLifeOpt('lifeMasaProteksi', this)">60 Thn</button>
+          <button class="life-opt-btn" data-val="75" onclick="selectLifeOpt('lifeMasaProteksi', this)">75 Thn</button>
+          <button class="life-opt-btn" data-val="100" onclick="selectLifeOpt('lifeMasaProteksi', this)">100 Thn</button>
+        </div>
+
+        <div class="life-pref-label" style="margin-top:14px;">Perkiraan Uang Pertanggungan (UP)</div>
+        <div class="ua-input-wrap">
+          <span class="ua-prefix">Rp</span>
+          <input type="text" id="lifeUA" placeholder="0" oninput="formatUP(this)" inputmode="numeric">
+        </div>
+        <div class="ua-quick-btns">
+          <button class="ua-quick-btn" onclick="setUA(500000000)">500 Jt</button>
+          <button class="ua-quick-btn" onclick="setUA(1000000000)">1 M</button>
+          <button class="ua-quick-btn" onclick="setUA(2000000000)">2 M</button>
+          <button class="ua-quick-btn" onclick="setUA(5000000000)">5 M</button>
+          <button class="ua-quick-btn" onclick="setUA(10000000000)">10 M</button>
+        </div>
+
+        <div class="life-checkbox-row" onclick="toggleNilaiTunai()" style="margin-top:14px;">
+          <div class="life-checkbox" id="nilaiTunaiBox"><span id="nilaiTunaiCheck"></span></div>
+          <div class="life-checkbox-label">
+            <strong style="color:var(--dc-t1);">Nilai tunai polis penting bagi saya</strong>
+            <span>Saya ingin polis yang memiliki nilai tabungan / investasi</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-life-wa" onclick="sendLifeWA()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Tanya Petrus Jakub tentang Asuransi Jiwa
+      </button>
+      <div style="font-size:10px;color:var(--dc-t4);text-align:center;margin-top:10px;">Opsional - Isi preferensi di atas untuk inquiry yang lebih spesifik</div>
+    </div>
+
+    <!-- WA button -->
+    <button class="btn-wa" style="margin-top:16px;" onclick="showWAModal()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Kirim ke WhatsApp Petrus Jakub
+    </button>
+    <button class="btn-primary" style="margin-top:10px; background:var(--bg-card); color:var(--t-muted); border:1.5px solid var(--border);" onclick="startOver()">🔄 Hitung Ulang</button>
+
+  </div>
+
+</div>
+
+<!-- MODAL -->
+<div class="wa-modal-overlay" id="waModalOverlay" onclick="closeWAModal()">
+  <div class="wa-modal" onclick="event.stopPropagation()">
+    <div class="wa-modal-emoji">🛡️</div>
+    <div class="wa-modal-title">Sekalian tanya asuransi jiwa?</div>
+    <div class="wa-modal-desc">Mau Petrus Jakub bantu rekomendasikan proteksi jiwa yang cocok untuk keluargamu juga?</div>
+    <button class="wa-modal-btn-yes" onclick="sendBothWA()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Ya, tambahkan info jiwa juga 🛡
+    </button>
+    <button class="wa-modal-btn-no" onclick="sendHealthOnlyWA()">Kirim asuransi kesehatan dulu →</button>
+  </div>
+</div>
+
+<div class="toast" id="appToast">
+  <span class="toast-icon">⚠️</span>
+  <span class="toast-msg" id="appToastMsg"></span>
+  <button class="toast-close" onclick="hideToast()">×</button>
+</div>
+
+<p class="footer-note">Data premi Manulife MiUltimate Health Care (MiUHC) 2025 · Angka dalam Rupiah · Bukan merupakan penawaran resmi<br>v2.0.0 · Deployed 2025 · Built for Petrus Jakub · Manulife Indonesia</p>
+
+<script>
+const PLANS = [
+  { key:"plan_a", tier:"Plan A", name:"Plan A", bed:"2 Bed", areaShort:"🇮🇩 Seluruh Indonesia", area:"Seluruh Indonesia", ded:true, badge:"Inner Limit" },
+  { key:"plan_b", tier:"Plan B", name:"Plan B", bed:"1 Bed", areaShort:"🇮🇩 Seluruh Indonesia", area:"Seluruh Indonesia", ded:false, badge:"Tanpa Inner Limit" },
+  { key:"plan_c", tier:"Plan C", name:"Plan C", bed:"1 Bed", areaShort:"🌏 ID + MY & SG", area:"Indonesia + Malaysia & Singapura", ded:false, badge:"Tanpa Inner Limit" },
+  { key:"plan_d", tier:"Plan D", name:"Plan D", bed:"1 Bed", areaShort:"🌍 Dunia exc. USA", area:"Seluruh Dunia kecuali USA", ded:false, badge:"Tanpa Inner Limit" },
+  { key:"plan_e", tier:"Plan E", name:"Plan E", bed:"1 Bed", areaShort:"🌐 Seluruh Dunia", area:"Seluruh Dunia", ded:false, badge:"Tanpa Inner Limit" },
+];
+
+const DATA = {
+  plan_a:{0:[6720000,6300000],1:[6720000,6300000],2:[6720000,6300000],3:[6720000,6300000],4:[6720000,6300000],5:[3759000,3269000],6:[3759000,3270000],7:[3759000,3270000],8:[3760000,3270000],9:[3760000,3270000],10:[3760000,3270000],11:[3760000,3270000],12:[3760000,3270000],13:[3760000,3270000],14:[3760000,3270000],15:[3760000,3270000],16:[3760000,3270000],17:[3760000,3270000],18:[3761000,3271000],19:[4666000,4782000],20:[4672000,4788000],21:[4677000,4793000],22:[4682000,4798000],23:[4687000,4804000],24:[4693000,4809000],25:[4698000,4815000],26:[4797000,5023000],27:[4817000,5044000],28:[4837000,5064000],29:[4857000,5086000],30:[4877000,5106000],31:[4887000,5374000],32:[4913000,5403000],33:[4940000,5433000],34:[4967000,5462000],35:[4993000,5491000],36:[5463000,6031000],37:[5508000,6081000],38:[5553000,6131000],39:[5599000,6181000],40:[5643000,6230000],41:[6696000,7228000],42:[7106000,7670000],43:[7120000,7686000],44:[7135000,7701000],45:[7439000,8031000],46:[8509000,8951000],47:[9009000,9478000],48:[9492000,9986000],49:[9751000,10258000],50:[10010000,10531000],51:[13078000,13302000],52:[13203000,13430000],53:[13330000,13559000],54:[13458000,13689000],55:[13580000,13813000],56:[15125000,14407000],57:[15623000,14882000],58:[15651000,14909000],59:[15680000,14936000],60:[16147000,15381000],61:[22030000,20098000],62:[22333000,20374000],63:[22639000,20654000],64:[22950000,20938000],65:[23240000,21202000],66:[28100000,24702000],67:[28104000,24707000],68:[28344000,24917000],69:[28969000,25467000],70:[29594000,26017000],71:[35207000,30163000],72:[35211000,30166000],73:[35231000,30183000],74:[35521000,30431000],75:[36995000,31694000],76:[42505000,35884000],77:[42511000,35889000],78:[42534000,35908000],79:[42884000,36204000],80:[44664000,37707000],81:[51447000,42472000],82:[51453000,42477000],83:[51481000,42501000],84:[51905000,42850000],85:[54059000,44629000],86:[62394000,50407000],87:[62402000,50413000],88:[62436000,50441000],89:[62950000,50856000],90:[65563000,52967000],91:[75562000,59903000],92:[75571000,59911000],93:[75613000,59944000],94:[76235000,60437000],95:[79399000,62946000],96:[91268000,71406000],97:[91280000,71415000],98:[91330000,71454000],99:[92082000,72042000],100:[95904000,75032000]},
+  plan_b:{0:[9549000,9683000],1:[9549000,9683000],2:[9549000,9683000],3:[9549000,9683000],4:[9549000,9683000],5:[5671000,5756000],6:[5672000,5756000],7:[5672000,5756000],8:[5672000,5756000],9:[5672000,5756000],10:[5672000,5756000],11:[5672000,5757000],12:[5672000,5757000],13:[5673000,5757000],14:[5673000,5757000],15:[5673000,5757000],16:[5673000,5757000],17:[5673000,5758000],18:[5673000,5758000],19:[7166000,8742000],20:[7174000,8752000],21:[7182000,8762000],22:[7190000,8772000],23:[7198000,8782000],24:[7206000,8792000],25:[7214000,8801000],26:[7251000,8850000],27:[7281000,8887000],28:[7311000,8923000],29:[7342000,8961000],30:[7372000,8997000],31:[7642000,10073000],32:[7684000,10128000],33:[7725000,10183000],34:[7768000,10239000],35:[7809000,10293000],36:[8613000,11151000],37:[8684000,11243000],38:[8756000,11336000],39:[8828000,11429000],40:[8897000,11519000],41:[10519000,13103000],42:[11163000,13906000],43:[11186000,13934000],44:[11209000,13962000],45:[11688000,14559000],46:[14330000,15467000],47:[15173000,16377000],48:[15986000,17255000],49:[16422000,17726000],50:[16859000,18197000],51:[22677000,22659000],52:[22895000,22876000],53:[23115000,23096000],54:[23337000,23318000],55:[23548000,23529000],56:[26622000,24902000],57:[27498000,25722000],58:[27548000,25768000],59:[27598000,25815000],60:[28420000,26584000],61:[37206000,32486000],62:[37717000,32932000],63:[38235000,33384000],64:[38760000,33842000],65:[39250000,34270000],66:[48583000,40197000],67:[48591000,40204000],68:[49005000,40546000],69:[50086000,41441000],70:[51167000,42335000],71:[60528000,50088000],72:[60536000,50094000],73:[60569000,50122000],74:[61068000,50534000],75:[63603000,52632000],76:[73111000,60510000],77:[73120000,60518000],78:[73160000,60551000],79:[73762000,61050000],80:[76824000,63584000],81:[88498000,73257000],82:[88509000,73266000],83:[88558000,73306000],84:[89287000,73909000],85:[92993000,76977000],86:[107333000,88852000],87:[107347000,88863000],88:[107406000,88912000],89:[108290000,89644000],90:[112784000,93365000],91:[129976000,107607000],92:[129993000,107620000],93:[130064000,107679000],94:[131135000,108566000],95:[136578000,113072000],96:[156987000,129973000],97:[157007000,129989000],98:[157093000,130061000],99:[158386000,131131000],100:[164960000,136574000]},
+  plan_c:{0:[15134000,15349000],1:[15134000,15349000],2:[15134000,15349000],3:[15134000,15349000],4:[15134000,15349000],5:[8991000,9125000],6:[8991000,9125000],7:[8991000,9125000],8:[8991000,9125000],9:[8991000,9126000],10:[8992000,9126000],11:[8992000,9126000],12:[8992000,9126000],13:[8992000,9127000],14:[8993000,9127000],15:[8993000,9127000],16:[8993000,9127000],17:[8993000,9128000],18:[8994000,9128000],19:[10075000,12296000],20:[10086000,12310000],21:[10098000,12324000],22:[10109000,12338000],23:[10120000,12352000],24:[10132000,12365000],25:[10143000,12379000],26:[10197000,12445000],27:[10240000,12497000],28:[10282000,12549000],29:[10325000,12601000],30:[10367000,12652000],31:[10745000,14163000],32:[10804000,14241000],33:[10863000,14318000],34:[10922000,14396000],35:[10979000,14472000],36:[12114000,15681000],37:[12213000,15810000],38:[12314000,15941000],39:[12416000,16072000],40:[12513000,16198000],41:[14796000,18426000],42:[15702000,19555000],43:[15734000,19595000],44:[15766000,19635000],45:[16440000,20474000],46:[19665000,21227000],47:[20821000,22476000],48:[21937000,23680000],49:[22536000,24326000],50:[23135000,24973000],51:[31125000,31099000],52:[31424000,31398000],53:[31726000,31700000],54:[32031000,32004000],55:[32321000,32294000],56:[37933000,35486000],57:[39182000,36655000],58:[39253000,36722000],59:[39325000,36788000],60:[40496000,37884000],61:[51063000,44586000],62:[51765000,45198000],63:[52475000,45818000],64:[53196000,46448000],65:[53868000,47034000],66:[66680000,55168000],67:[66691000,55178000],68:[67259000,55647000],69:[68743000,56875000],70:[70227000,58103000],71:[83074000,68744000],72:[83085000,68753000],73:[83130000,68790000],74:[83814000,69357000],75:[87293000,72235000],76:[100345000,83053000],77:[100358000,83063000],78:[100413000,83109000],79:[101239000,83793000],80:[105442000,87271000],81:[121468000,100545000],82:[121483000,100558000],83:[121550000,100613000],84:[122550000,101441000],85:[127637000,105652000],86:[147319000,121953000],87:[147338000,121969000],88:[147419000,122036000],89:[148632000,123040000],90:[154802000,128147000],91:[178397000,147694000],92:[178420000,147713000],93:[178518000,147794000],94:[179987000,149010000],95:[187458000,155195000],96:[215467000,178393000],97:[215495000,178416000],98:[215613000,178513000],99:[217388000,179983000],100:[226411000,187453000]},
+  plan_d:{0:[37017000,37263000],1:[37017000,37263000],2:[37017000,37263000],3:[37017000,37263000],4:[37017000,37263000],5:[23503000,23605000],6:[23504000,23606000],7:[23504000,23606000],8:[23505000,23607000],9:[23506000,23608000],10:[23506000,23608000],11:[23507000,23609000],12:[23507000,23610000],13:[23508000,23610000],14:[23509000,23611000],15:[23509000,23611000],16:[23510000,23612000],17:[23510000,23613000],18:[23511000,23613000],19:[27631000,33172000],20:[27662000,33209000],21:[27693000,33247000],22:[27724000,33284000],23:[27755000,33322000],24:[27786000,33359000],25:[27818000,33397000],26:[27957000,33564000],27:[28033000,33653000],28:[28110000,33743000],29:[28186000,33833000],30:[28262000,33922000],31:[29010000,39261000],32:[29168000,39475000],33:[29327000,39690000],34:[29486000,39907000],35:[29642000,40117000],36:[30617000,40463000],37:[30870000,40797000],38:[31124000,41134000],39:[31381000,41473000],40:[31628000,41799000],41:[32720000,41907000],42:[34724000,42015000],43:[34795000,42100000],44:[34865000,42186000],45:[36355000,43989000],46:[36884000,45028000],47:[39054000,46067000],48:[41146000,48535000],49:[42270000,49860000],50:[43393000,51185000],51:[46991000,52622000],52:[47442000,53127000],53:[47898000,53637000],54:[48358000,54152000],55:[48796000,54643000],56:[60970000,62747000],57:[62978000,64813000],58:[63093000,64931000],59:[63207000,65049000],60:[65090000,66986000],61:[81733000,76280000],62:[82855000,77327000],63:[83993000,78389000],64:[85146000,79465000],65:[86222000,80469000],66:[96872000,82556000],67:[96889000,82570000],68:[97713000,83272000],69:[99869000,85110000],70:[102025000,86948000],71:[110514000,91766000],72:[110528000,91777000],73:[110589000,91828000],74:[111499000,92583000],75:[116127000,96426000],76:[133854000,109454000],77:[133871000,109468000],78:[133945000,109528000],79:[135047000,110429000],80:[140653000,115013000],81:[201815000,161268000],82:[201841000,161289000],83:[201952000,161377000],84:[203614000,162705000],85:[212065000,169459000],86:[293960000,229745000],87:[293997000,229774000],88:[294159000,229900000],89:[296580000,231792000],90:[308890000,241413000],91:[335059000,257280000],92:[335102000,257313000],93:[335286000,257454000],94:[338045000,259573000],95:[352076000,270347000],96:[352445000,270630000],97:[352815000,270914000],98:[353185000,271198000],99:[353552000,271482000],100:[368227000,280242000]},
+  plan_e:{0:[67124000,66958000],1:[67124000,66958000],2:[67124000,66958000],3:[67124000,66958000],4:[67124000,66958000],5:[42408000,42300000],6:[42409000,42301000],7:[42410000,42303000],8:[42411000,42304000],9:[42412000,42305000],10:[42413000,42306000],11:[42414000,42307000],12:[42415000,42308000],13:[42417000,42309000],14:[42418000,42310000],15:[42419000,42312000],16:[42420000,42313000],17:[42421000,42314000],18:[42422000,42315000],19:[51692000,58848000],20:[51751000,58914000],21:[51809000,58981000],22:[51867000,59047000],23:[51925000,59113000],24:[51984000,59180000],25:[52042000,59247000],26:[53199000,60560000],27:[53420000,60811000],28:[53642000,61064000],29:[53865000,61317000],30:[54083000,61566000],31:[57847000,71232000],32:[58162000,71620000],33:[58479000,72011000],34:[58797000,72403000],35:[59107000,72785000],36:[65312000,74119000],37:[65850000,74730000],38:[66394000,75347000],39:[66941000,75968000],40:[67467000,76564000],41:[67956000,77857000],42:[72118000,79150000],43:[72265000,79311000],44:[72412000,79473000],45:[75506000,82869000],46:[87521000,94427000],47:[92669000,99981000],48:[97634000,105337000],49:[100300000,108214000],50:[102966000,111090000],51:[130420000,122357000],52:[131672000,123532000],53:[132936000,124718000],54:[134213000,125916000],55:[135429000,127057000],56:[171991000,141180000],57:[177654000,145829000],58:[177977000,146094000],59:[178300000,146359000],60:[183612000,150719000],61:[223360000,181390000],62:[226427000,183881000],63:[229536000,186405000],64:[232687000,188965000],65:[235627000,191352000],66:[258688000,202501000],67:[258733000,202536000],68:[260934000,204259000],69:[266692000,208766000],70:[272450000,213274000],71:[287654000,219433000],72:[287690000,219461000],73:[287848000,219581000],74:[290217000,221388000],75:[302263000,230578000],76:[347392000,261169000],77:[347436000,261202000],78:[347627000,261346000],79:[350488000,263496000],80:[365036000,274433000],81:[565679000,415776000],82:[565751000,415829000],83:[566062000,416057000],84:[570720000,419481000],85:[594409000,436893000],86:[725969000,522031000],87:[726062000,522098000],88:[726461000,522384000],89:[732439000,526684000],90:[762841000,548545000],91:[763840000,551615000],92:[764840000,554702000],93:[765841000,557806000],94:[766836000,560927000],95:[798665000,563894000],96:[809563000,565185000],97:[809667000,565257000],98:[810111000,565568000],99:[816778000,570222000],100:[850681000,593891000]}
+};
+
+const FREQ = [
+  { key:'annual',    label:'Tahunan',    short:'Thn',  x:1.00,   times:1,  desc:'100%' },
+  { key:'semi',      label:'Semesteran', short:'6bln', x:0.52,   times:2,  desc:'52% x 2' },
+  { key:'quarterly', label:'Triwulan',   short:'3bln', x:0.27,   times:4,  desc:'27% x 4' },
+  { key:'monthly',   label:'Bulanan',    short:'Bln',  x:0.10,   times:12, desc:'10% x 12' },
+];
+
+// STATE
+let personCount = 1;
+let currentPerson = 0;
+let persons = [];
+let selectedFreq = 'annual';
+
+const DEFAULT_NAMES = ['Ayah','Ibu','Anak 1','Anak 2','Anak 3'];
+
+function initPersons(n) {
+  const old = persons;
+  persons = [];
+  for (let i = 0; i < n; i++) {
+    persons.push(old[i] || {
+      name: DEFAULT_NAMES[i] || 'Orang '+(i+1),
+      age: 35,
+      birthdate: '',
+      gender: 'M',
+      plan: 'plan_b'
+    });
+  }
+}
+
+function calcAgeFromBirthdate(bdStr) {
+  if (!bdStr) return null;
+  const today = new Date();
+  const bd = new Date(bdStr);
+  if (isNaN(bd)) return null;
+  let age = today.getFullYear() - bd.getFullYear();
+  const nextBd = new Date(today.getFullYear(), bd.getMonth(), bd.getDate());
+  if (nextBd <= today) {
+    age = today.getFullYear() - bd.getFullYear();
+    const nextBdNextYear = new Date(today.getFullYear() + 1, bd.getMonth(), bd.getDate());
+    const msIn6Months = 6 * 30.4375 * 24 * 60 * 60 * 1000;
+    if ((nextBdNextYear - today) <= msIn6Months) age += 1;
+  } else {
+    age = today.getFullYear() - bd.getFullYear() - 1;
+    const msIn6Months = 6 * 30.4375 * 24 * 60 * 60 * 1000;
+    if ((nextBd - today) <= msIn6Months) age += 1;
+  }
+  return Math.max(0, Math.min(70, age));
+}
+
+function selectCount(btn) {
+  document.querySelectorAll('.count-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  personCount = parseInt(btn.dataset.n);
+}
+
+function goToPersons() {
+  initPersons(personCount);
+  const recoTitle = document.querySelector('#recoCard .reco-title')?.textContent;
+  const match = PLANS.find(p => p.name === recoTitle);
+  if (match) persons.forEach(p => p.plan = match.key);
+  currentPerson = 0;
+  renderPersonTabs();
+  renderPersonForm(currentPerson);
+  updateSteps(2);
+  goTo('persons');
+}
+
+function renderPersonTabs() {
+  const tabs = document.getElementById('personTabs');
+  tabs.innerHTML = '';
+  persons.forEach((p, i) => {
+    const div = document.createElement('div');
+    div.className = 'person-tab' + (i === currentPerson ? ' active' : '') + (isPersonFilled(p) ? ' filled' : '');
+    div.dataset.i = i;
+    div.onclick = () => { switchPerson(i); };
+    div.innerHTML = '<span class="check">✓</span>' + p.name;
+    tabs.appendChild(div);
+  });
+}
+
+function isPersonFilled(p) { return p.age >= 1 && p.age <= 100 && p.gender && p.plan; }
+
+function switchPerson(i) {
+  saveCurrent();
+  currentPerson = i;
+  renderPersonTabs();
+  renderPersonForm(i);
+  setTimeout(() => {
+    const activeTab = document.querySelector('.person-tab.active');
+    if (activeTab) activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    const formCard = document.getElementById('personForm');
+    if (formCard) formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 50);
+}
+
+function saveCurrent() {
+  const p = persons[currentPerson];
+  const nameEl = document.getElementById('pName');
+  const ageEl = document.getElementById('pAge');
+  const bdEl = document.getElementById('pBirthdate');
+  if (nameEl) p.name = nameEl.value || DEFAULT_NAMES[currentPerson];
+  if (bdEl && bdEl.value) {
+    p.birthdate = bdEl.value;
+    const computed = calcAgeFromBirthdate(bdEl.value);
+    if (computed !== null) p.age = computed;
+  } else if (ageEl) {
+    p.birthdate = '';
+    let a = parseInt(ageEl.value);
+    if (isNaN(a) || a < 0) a = 0;
+    if (a > 70) a = 70;
+    p.age = a;
+  }
+}
+
+function renderPersonForm(i) {
+  const p = persons[i];
+  const form = document.getElementById('personForm');
+
+  let planHTML = PLANS.map(pl => {
+    const dedTag = pl.ded ? 'ded' : 'noded';
+    const dedLabel = pl.ded ? 'Dengan Inner Limit' : 'Tanpa Inner Limit';
+    return '<button class="plan-btn'+(p.plan === pl.key ? ' active' : '')+'" data-pk="'+pl.key+'" onclick="selectPlan(this)">' +
+      '<span class="pt">'+pl.tier+'</span>' +
+      '<span class="pn">'+pl.name+'</span>' +
+      '<span class="p-tags">' +
+        '<span class="p-tag bed">🛏 '+pl.bed+'</span>' +
+        '<span class="p-tag area">'+pl.areaShort+'</span>' +
+        '<span class="p-tag '+dedTag+'">'+dedLabel+'</span>' +
+      '</span></button>';
+  }).join('');
+
+  let freqHTML = FREQ.map(f => {
+    return '<button class="freq-btn'+(selectedFreq === f.key ? ' active' : '')+'" data-fk="'+f.key+'" onclick="selectFreq(this)">' +
+      '<span class="fn">'+f.label+'</span><span class="fm">'+f.desc+'</span></button>';
+  }).join('');
+
+  form.innerHTML =
+    '<div class="field-group">' +
+      '<label class="field-label">Nama / Panggilan</label>' +
+      '<div class="name-input-wrap"><input type="text" id="pName" value="'+p.name+'" placeholder="Contoh: Ayah, Budi..."></div>' +
+    '</div>' +
+    '<div class="field-group">' +
+      '<label class="field-label">Tanggal Lahir & Usia <span style="color:var(--green);font-size:9px;letter-spacing:0.06em;">Usia masuk: 30 hari - 70 tahun</span></label>' +
+      '<div class="birthdate-wrap">' +
+        '<div class="birthdate-row"><span class="bd-icon">📅</span><input type="date" id="pBirthdate" value="'+(p.birthdate||'')+'" max="'+new Date().toISOString().split('T')[0]+'" oninput="onBirthdateChange()"></div>' +
+        '<div class="age-display-row">' +
+          '<div class="age-display-box" id="ageDisplayBox"><span class="age-num" id="ageDisplayNum">'+p.age+'</span><span class="age-lbl">tahun<br><span id="ageDisplayNote" style="font-size:10px;color:var(--green);"></span></span></div>' +
+          '<div style="display:flex;flex-direction:column;gap:6px;">' +
+            '<div style="display:flex;align-items:center;gap:6px;">' +
+              '<button class="age-btn" style="width:40px;height:40px;font-size:18px;border:1.5px solid var(--border);border-radius:8px;background:var(--bg-input);" onclick="changeAge(-1)">\u2212</button>' +
+              '<input type="number" id="pAge" style="width:56px;text-align:center;font-family:\'Cormorant Garamond\',serif;font-size:20px;border:1.5px solid var(--border);border-radius:8px;background:var(--bg-input);color:var(--t-primary);outline:none;padding:6px 0;" value="'+p.age+'" min="0" max="70" oninput="onManualAgeChange()">' +
+              '<button class="age-btn" style="width:40px;height:40px;font-size:18px;border:1.5px solid var(--border);border-radius:8px;background:var(--bg-input);" onclick="changeAge(1)">+</button>' +
+            '</div>' +
+            '<span style="font-size:10px;color:var(--t-muted);text-align:center;">manual override</span>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="field-group">' +
+      '<label class="field-label">Jenis Kelamin</label>' +
+      '<div class="toggle-row">' +
+        '<button class="toggle-btn'+(p.gender==='M'?' active':'')+'" data-g="M" onclick="selectGender(this)">👨 Laki-laki</button>' +
+        '<button class="toggle-btn'+(p.gender==='F'?' active':'')+'" data-g="F" onclick="selectGender(this)">👩 Perempuan</button>' +
+      '</div>' +
+    '</div>' +
+    '<div class="field-group">' +
+      '<label class="field-label">Plan MiUHC</label>' +
+      '<div class="plan-grid">'+planHTML+'</div>' +
+      '<div style="margin-top:8px;font-size:10px;color:var(--gray);line-height:1.6;">' +
+        'Plan A: dengan inner limit · Plan B-E: tanpa inner limit (as charged)' +
+      '</div>' +
+    '</div>' +
+    '<div class="field-group">' +
+      '<label class="field-label">Frekuensi Pembayaran</label>' +
+      '<div class="freq-grid">'+freqHTML+'</div>' +
+    '</div>' +
+    '<div id="inlineResult"></div>';
+  calcInline();
+}
+
+function onBirthdateChange() {
+  const bdEl = document.getElementById('pBirthdate');
+  const ageEl = document.getElementById('pAge');
+  if (!bdEl || !bdEl.value) return;
+  const computed = calcAgeFromBirthdate(bdEl.value);
+  if (computed === null) return;
+  const today = new Date();
+  const bd = new Date(bdEl.value);
+  let naturalAge = today.getFullYear() - bd.getFullYear();
+  const nextBd = new Date(today.getFullYear(), bd.getMonth(), bd.getDate());
+  if (nextBd > today) naturalAge--;
+  const wasRoundedUp = computed > naturalAge;
+  if (ageEl) ageEl.value = computed;
+  updateAgeDisplay(computed, wasRoundedUp ? '⚡ +1 (ulang tahun < 6 bln)' : '');
+  saveCurrent(); calcInline();
+}
+
+function onManualAgeChange() {
+  const ageEl = document.getElementById('pAge');
+  const bdEl = document.getElementById('pBirthdate');
+  if (bdEl) bdEl.value = '';
+  if (ageEl) { let v = parseInt(ageEl.value); if (!isNaN(v)) { v = Math.max(0, Math.min(70, v)); ageEl.value = v; updateAgeDisplay(v, ''); } }
+  saveCurrent(); calcInline();
+}
+
+function updateAgeDisplay(age, note) {
+  const numEl = document.getElementById('ageDisplayNum');
+  const noteEl = document.getElementById('ageDisplayNote');
+  if (numEl) { numEl.textContent = age; numEl.classList.remove('pop'); void numEl.offsetWidth; numEl.classList.add('pop'); }
+  if (noteEl) noteEl.textContent = note || '';
+}
+
+function changeAge(delta) {
+  const el = document.getElementById('pAge');
+  const bdEl = document.getElementById('pBirthdate');
+  let v = parseInt(el.value) + delta;
+  v = Math.max(0, Math.min(70, v));
+  el.value = v;
+  if (bdEl) bdEl.value = '';
+  updateAgeDisplay(v, '');
+  saveCurrent(); calcInline();
+}
+
+function selectGender(btn) {
+  document.querySelectorAll('[data-g]').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  persons[currentPerson].gender = btn.dataset.g;
+  calcInline();
+}
+
+function selectPlan(btn) {
+  document.querySelectorAll('[data-pk]').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  persons[currentPerson].plan = btn.dataset.pk;
+  calcInline();
+}
+
+function selectFreq(btn) {
+  document.querySelectorAll('[data-fk]').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  selectedFreq = btn.dataset.fk;
+  calcInline();
+}
+
+function calcInline() {
+  saveCurrent();
+  const p = persons[currentPerson];
+  const el = document.getElementById('inlineResult');
+  if (!el) return;
+  const plan = PLANS.find(x => x.key === p.plan);
+  const row = DATA[p.plan]?.[p.age];
+  if (!row || !plan) { el.innerHTML = ''; return; }
+  if (p.age > 70) {
+    el.innerHTML = '<div class="field-error"><span class="fe-icon">⚠️</span> Usia masuk maksimal <strong>70 tahun</strong>. Silakan periksa kembali.</div>';
+    return;
+  }
+  const baseAnnual = row[p.gender === 'M' ? 0 : 1];
+  const freq = FREQ.find(f => f.key === selectedFreq);
+  const perInstalment = Math.round(baseAnnual * freq.x);
+  const totalPerYear = perInstalment * freq.times;
+  let secondLine = freq.key === 'annual' ? '1x pembayaran / tahun' : freq.times+'x '+fmt(perInstalment)+' / tahun = '+fmt(totalPerYear);
+
+  el.innerHTML =
+    '<div class="inline-result pop">' +
+      '<div class="ir-left">' +
+        '<div class="ir-annual">'+fmt(perInstalment)+'</div>' +
+        '<div class="ir-monthly">'+secondLine+'</div>' +
+      '</div>' +
+      '<div class="ir-right">'+plan.name+'<br>'+(p.gender === 'M' ? 'Laki-laki' : 'Perempuan')+', '+p.age+' thn<br><span style="color:#4ade80;font-size:10px;">'+freq.label+'</span></div>' +
+    '</div>';
+  renderPersonTabs();
+}
+
+function goToSummary() {
+  saveCurrent();
+  for (let i = 0; i < persons.length; i++) {
+    const p = persons[i];
+    if (p.age < 0 || p.age > 70) {
+      showToast('Usia '+p.name+' harus antara 30 hari - 70 tahun.');
+      switchPerson(i); return;
+    }
+  }
+  renderSummary();
+  updateSteps(3);
+  goTo('summary');
+}
+
+function renderSummary() {
+  const cards = document.getElementById('summaryCards');
+  const totalBar = document.getElementById('totalBar');
+  const banner = document.getElementById('savingsBanner');
+  const freq = FREQ.find(f => f.key === selectedFreq);
+  let grandTotalPerYear = 0;
+  let grandBaseAnnual = 0;
+  let html = '';
+
+  persons.forEach(p => {
+    const plan = PLANS.find(x => x.key === p.plan);
+    const row = DATA[p.plan]?.[p.age];
+    if (!row) return;
+    const baseAnnual = row[p.gender === 'M' ? 0 : 1];
+    const perInstalment = Math.round(baseAnnual * freq.x);
+    const totalPerYear = perInstalment * freq.times;
+    grandTotalPerYear += totalPerYear;
+    grandBaseAnnual += baseAnnual;
+
+    let detailFreq = freq.key === 'annual' ? 'Bayar 1x / tahun' : freq.times+'x '+fmt(perInstalment)+' = '+fmt(totalPerYear)+'/thn';
+
+    html +=
+      '<div class="summary-card">' +
+        '<div class="sc-left">' +
+          '<div class="sc-name">'+p.name+'</div>' +
+          '<div class="sc-detail">'+(p.gender === 'M' ? 'Laki-laki' : 'Perempuan')+' · '+p.age+' thn<br>'+plan.name+' · '+plan.area+'<br><span style="color:var(--green);font-size:10px;">'+detailFreq+'</span></div>' +
+        '</div>' +
+        '<div class="sc-right">' +
+          '<div class="sc-amount">'+fmt(perInstalment)+'</div>' +
+          '<div class="sc-monthly">per '+freq.label.toLowerCase()+'</div>' +
+        '</div>' +
+      '</div>';
+  });
+  cards.innerHTML = html;
+
+  // Savings banner
+  if (freq.key !== 'annual') {
+    const savings = grandTotalPerYear - grandBaseAnnual;
+    const savingsPct = Math.round((savings / grandTotalPerYear) * 100);
+    banner.innerHTML =
+      '<div class="savings-banner">' +
+        '<div class="savings-icon">💡</div>' +
+        '<div class="savings-body">' +
+          '<div class="savings-title">Rekomendasi: Bayar Tahunan</div>' +
+          '<div class="savings-desc">Dengan pembayaran <strong style="color:var(--dc-t1);">'+freq.label+'</strong>, total per tahun: <strong style="color:var(--dc-t1);">'+fmt(grandTotalPerYear)+'</strong>.<br>Jika <strong style="color:var(--dc-t1);">Tahunan</strong>, cukup <strong style="color:var(--dc-t1);">'+fmt(grandBaseAnnual)+'</strong> - lebih hemat:</div>' +
+          '<div class="savings-amount">Hemat '+fmt(savings)+' / tahun <span style="font-size:14px;color:rgba(74,222,128,0.7);">('+savingsPct+'%)</span></div>' +
+          '<button class="savings-switch-btn" onclick="switchToAnnual()">✓ Ganti ke Tahunan</button>' +
+        '</div>' +
+      '</div>';
+  } else {
+    banner.innerHTML = '';
+  }
+
+  const grandPerInstalment = persons.reduce((sum, p) => {
+    const row = DATA[p.plan]?.[p.age];
+    if (!row) return sum;
+    return sum + Math.round(row[p.gender === 'M' ? 0 : 1] * freq.x);
+  }, 0);
+
+  totalBar.innerHTML =
+    '<div><div class="tb-label">Total per '+freq.label+' · '+persons.length+' orang</div><div class="tb-amount">'+fmt(grandPerInstalment)+'</div></div>' +
+    '<div class="tb-right"><div class="tb-mo">Total / Tahun</div><div class="tb-mo-amt">'+fmt(grandTotalPerYear)+'</div></div>';
+}
+
+function switchToAnnual() { selectedFreq = 'annual'; renderSummary(); }
+
+function buildSummaryText() {
+  const freq = FREQ.find(f => f.key === selectedFreq);
+  let lines = [
+    'Manulife MiUltimate Health Care (MiUHC) 2025 - Estimasi Premi',
+    'Frekuensi Pembayaran: '+freq.label+' ('+freq.desc+')',
+    '\u2500'.repeat(44)
+  ];
+  let grandTotalPerYear = 0;
+
+  persons.forEach(p => {
+    const plan = PLANS.find(x => x.key === p.plan);
+    const row = DATA[p.plan]?.[p.age];
+    if (!row) return;
+    const baseAnnual = row[p.gender === 'M' ? 0 : 1];
+    const perInstalment = Math.round(baseAnnual * freq.x);
+    const totalPerYear = perInstalment * freq.times;
+    grandTotalPerYear += totalPerYear;
+    lines.push(p.name+' ('+(p.gender === 'M' ? 'L' : 'P')+', '+p.age+' thn) - '+plan.name+' ('+plan.area+')');
+    lines.push('  Per '+freq.label+'  : '+fmt(perInstalment));
+    if (freq.key !== 'annual') lines.push('  Total/Tahun : '+fmt(totalPerYear));
+  });
+
+  const grandPerInstalment = persons.reduce((sum, p) => {
+    const row = DATA[p.plan]?.[p.age];
+    if (!row) return sum;
+    return sum + Math.round(row[p.gender === 'M' ? 0 : 1] * freq.x);
+  }, 0);
+
+  lines.push('\u2500'.repeat(44));
+  lines.push('TOTAL PER '+freq.label.toUpperCase()+' : '+fmt(grandPerInstalment));
+  if (freq.key !== 'annual') lines.push('TOTAL PER TAHUN        : '+fmt(grandTotalPerYear));
+  lines.push('');
+  lines.push('*Angka estimasi. Bukan penawaran resmi.');
+  return lines.join('\n');
+}
+
+function copyAll() {
+  const text = buildSummaryText();
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.action-row .btn-primary');
+    const orig = btn.textContent;
+    btn.textContent = '✅ Tersalin!';
+    setTimeout(() => btn.textContent = orig, 2000);
+  });
+}
+
+// WA MODAL
+function showWAModal() { document.getElementById('waModalOverlay').classList.add('open'); }
+function closeWAModal() { document.getElementById('waModalOverlay').classList.remove('open'); }
+function sendHealthOnlyWA() { closeWAModal(); sendToWA(); }
+
+function sendBothWA() {
+  closeWAModal();
+  const summary = buildSummaryText();
+  const intro = 'Hi Petrus Jakub! Tolong buatkan proposal asuransi kesehatan MiUHC dengan spesifikasi berikut:\n\n';
+  const uaVal = getUPRaw();
+  const selectedPeople = lifeSelectedPersons.length > 0 ? lifeSelectedPersons.map(i => persons[i]) : persons;
+  const names = selectedPeople.map(p => p.name+' ('+p.age+' thn)').join(', ');
+
+  let lifeSection = '';
+  if (lifeMasaBayar || lifeMasaProteksi || uaVal || lifeNilaiTunai) {
+    lifeSection =
+      '\n\n─────────────────────────\n' +
+      '🛡 *Sekalian info preferensi Asuransi Jiwa:*\n' +
+      '• Masa Bayar        : '+(lifeMasaBayar ? lifeMasaBayar+' Tahun' : 'Belum dipilih')+'\n' +
+      '• Masa Proteksi     : '+(lifeMasaProteksi ? 'Hingga usia '+lifeMasaProteksi+' tahun' : 'Belum dipilih')+'\n' +
+      '• Uang Pertanggungan (UP): '+fmtUA(uaVal)+'\n' +
+      '• Nilai Tunai       : '+(lifeNilaiTunai ? 'Ya, penting ✅' : 'Tidak prioritas');
+  } else {
+    lifeSection =
+      '\n\n─────────────────────────\n' +
+      '🛡 *Saya juga tertarik konsultasi Asuransi Jiwa Manulife untuk: '+names+'*\n' +
+      'Mohon bantu rekomendasikan yang sesuai.';
+  }
+
+  const fullMsg = intro + summary + lifeSection;
+  window.open('https://wa.me/6287781896087?text='+encodeURIComponent(fullMsg), '_blank');
+}
+
+function sendToWA() {
+  const summary = buildSummaryText();
+  const intro = 'Hi Petrus Jakub! Tolong buatkan proposal asuransi kesehatan MiUHC dengan spesifikasi berikut:\n\n';
+  window.open('https://wa.me/6287781896087?text='+encodeURIComponent(intro + summary), '_blank');
+}
+
+// LIFE INSURANCE PREFERENCES
+let lifeMasaBayar = null;
+let lifeMasaProteksi = null;
+let lifeNilaiTunai = false;
+let lifeCardOpen = false;
+let lifeSelectedPersons = [];
+
+function renderLifePersonSelector() {
+  const el = document.getElementById('lifePersonSelector');
+  if (!el) return;
+  if (persons.length <= 1) { lifeSelectedPersons = [0]; el.innerHTML = ''; return; }
+  if (lifeSelectedPersons.length === 0) lifeSelectedPersons = [0];
+
+  const chips = persons.map((p, i) =>
+    '<div class="life-person-chip'+(lifeSelectedPersons[0] === i ? ' selected' : '')+'" onclick="selectLifePerson('+i+')">' +
+      '<span class="chip-check">'+(lifeSelectedPersons[0] === i ? '✓' : '')+'</span>' +
+      p.name+' <span style="opacity:0.6;font-size:10px;">'+p.age+'thn</span></div>'
+  ).join('');
+
+  el.innerHTML =
+    '<div class="life-person-selector"><div class="life-pref-label">Buatkan proposal jiwa untuk siapa?</div>' +
+    '<div class="life-person-chips">'+chips+'</div></div>';
+}
+
+function selectLifePerson(i) { lifeSelectedPersons = [i]; renderLifePersonSelector(); }
+
+function toggleLifeCard(e) {
+  if (e) e.stopPropagation();
+  lifeCardOpen = !lifeCardOpen;
+  const body = document.getElementById('lifeCardBody');
+  const arrow = document.getElementById('lifeCardArrow');
+  if (body) { body.style.display = lifeCardOpen ? 'block' : 'none'; if (lifeCardOpen) renderLifePersonSelector(); }
+  if (arrow) arrow.classList.toggle('open', lifeCardOpen);
+}
+
+function formatUP(el) { const raw = el.value.replace(/\D/g, ''); el.value = raw ? parseInt(raw).toLocaleString('id-ID') : ''; }
+function setUA(val) { const el = document.getElementById('lifeUA'); if (el) el.value = val.toLocaleString('id-ID'); }
+function getUPRaw() { const el = document.getElementById('lifeUA'); if (!el || !el.value) return 0; return parseInt(el.value.replace(/\./g, '').replace(/,/g, '')) || 0; }
+function fmtUA(n) {
+  if (!n || n === 0) return 'Belum diisi';
+  if (n >= 1000000000) return 'Rp '+(n/1000000000).toLocaleString('id-ID')+' Miliar';
+  if (n >= 1000000) return 'Rp '+(n/1000000).toLocaleString('id-ID')+' Juta';
+  return 'Rp '+n.toLocaleString('id-ID');
+}
+
+function selectLifeOpt(groupId, btn) {
+  document.querySelectorAll('#'+groupId+' .life-opt-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if (groupId === 'lifeMasaBayar') lifeMasaBayar = btn.dataset.val;
+  if (groupId === 'lifeMasaProteksi') lifeMasaProteksi = btn.dataset.val;
+}
+
+function toggleNilaiTunai() {
+  lifeNilaiTunai = !lifeNilaiTunai;
+  const row = document.querySelector('.life-checkbox-row');
+  const box = document.getElementById('nilaiTunaiCheck');
+  if (row) row.classList.toggle('checked', lifeNilaiTunai);
+  if (box) box.textContent = lifeNilaiTunai ? '✓' : '';
+}
+
+function sendLifeWA() {
+  const selectedPeople = lifeSelectedPersons.length > 0 ? lifeSelectedPersons.map(i => persons[i]) : persons;
+  const names = selectedPeople.map(p => p.name+' ('+p.age+' thn)').join(', ');
+  const healthSummary = buildSummaryText();
+  const uaVal = getUPRaw();
+
+  let lifeLines = ['📋 *Preferensi Asuransi Jiwa:*'];
+  lifeLines.push('• Untuk             : '+names);
+  lifeLines.push('• Masa Bayar        : '+(lifeMasaBayar ? lifeMasaBayar+' Tahun' : 'Belum dipilih'));
+  lifeLines.push('• Masa Proteksi     : '+(lifeMasaProteksi ? 'Hingga usia '+lifeMasaProteksi+' tahun' : 'Belum dipilih'));
+  lifeLines.push('• Uang Pertanggungan (UP): '+fmtUA(uaVal));
+  lifeLines.push('• Nilai Tunai       : '+(lifeNilaiTunai ? 'Ya, penting bagi saya ✅' : 'Tidak menjadi prioritas'));
+
+  const msg =
+    'Hi Petrus Jakub! Saya tertarik dengan *asuransi jiwa Manulife*.\n\n' +
+    lifeLines.join('\n') +
+    '\n\n─────────────────────────\n' +
+    '📊 *Referensi Asuransi Kesehatan MiUHC yang sudah dihitung:*\n\n' +
+    healthSummary +
+    '\n\nMohon bantu rekomendasikan produk yang sesuai. Terima kasih!';
+
+  window.open('https://wa.me/6287781896087?text='+encodeURIComponent(msg), '_blank');
+}
+
+// NAVIGATION
+function goTo(screen) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + screen).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function updateSteps(active) {
+  [0,1,2,3].forEach(i => {
+    const dot = document.getElementById('sd'+i);
+    const line = document.getElementById('sl'+i);
+    if (!dot) return;
+    if (i < active) { dot.classList.add('done'); dot.classList.remove('active'); dot.textContent = '✓'; }
+    else if (i === active) { dot.classList.add('active'); dot.classList.remove('done'); dot.textContent = i+1; }
+    else { dot.classList.remove('active','done'); dot.textContent = i === 3 ? '✓' : i+1; }
+    if (line) line.classList.toggle('done', i < active);
+  });
+}
+
+function startOver() {
+  personCount = 1; persons = []; currentPerson = 0; selectedFreq = 'annual';
+  lifeMasaBayar = null; lifeMasaProteksi = null; lifeNilaiTunai = false;
+  lifeCardOpen = false; lifeSelectedPersons = [];
+  assessAnswers = {}; currentAssessQ = 0;
+  const body = document.getElementById('lifeCardBody');
+  const arrow = document.getElementById('lifeCardArrow');
+  if (body) body.style.display = 'none';
+  if (arrow) arrow.classList.remove('open');
+  document.querySelectorAll('.count-btn').forEach(b => b.classList.toggle('active', b.dataset.n === '1'));
+  updateSteps(0); renderAssessQ(); goTo('assess');
+}
+
+// NEEDS ASSESSMENT
+const ASSESS_QS = [
+  {
+    id: 'coverage',
+    title: 'Asuransi apa saja yang saat ini sudah kamu miliki?',
+    sub: 'Boleh pilih lebih dari satu.',
+    multi: true,
+    opts: [
+      { icon: '🏥', label: 'BPJS Kesehatan', val: 'bpjs' },
+      { icon: '🏢', label: 'Asuransi dari kantor', val: 'company' },
+      { icon: '✅', label: 'Asuransi pribadi', val: 'private' },
+      { icon: '❌', label: 'Belum punya sama sekali', val: 'none' },
+    ]
+  },
+  {
+    id: 'concern',
+    title: 'Yang paling kamu khawatirkan kalau terjadi sesuatu?',
+    sub: 'Jujur saja -- tidak ada jawaban yang salah.',
+    opts: [
+      { icon: '🏨', label: 'Biaya rumah sakit yang mahal', val: 'health' },
+      { icon: '👨‍👩‍👧', label: 'Keluarga tidak bisa hidup layak tanpa penghasilanku', val: 'life' },
+      { icon: '⚖️', label: 'Keduanya sama-sama penting', val: 'both' },
+      { icon: '🤷', label: 'Belum pernah kepikiran', val: 'none' },
+    ]
+  },
+  {
+    id: 'dependent',
+    title: 'Kamu menanggung siapa saja?',
+    sub: 'Ini membantu menentukan besar perlindungan yang ideal.',
+    opts: [
+      { icon: '🙋', label: 'Hanya diri sendiri', val: 'self' },
+      { icon: '💑', label: 'Pasangan', val: 'spouse' },
+      { icon: '👨‍👩‍👧', label: 'Pasangan & anak-anak', val: 'family' },
+      { icon: '👴', label: 'Orang tua / keluarga lain juga', val: 'extended' },
+    ]
+  },
+  {
+    id: 'budget',
+    title: 'Kalau bicara premi, kamu lebih nyaman...',
+    sub: 'Ini membantu Petrus Jakub sesuaikan tier rekomendasi.',
+    opts: [
+      { icon: '🔝', label: 'Proteksi maksimal, berapapun preminya', val: 'max' },
+      { icon: '📈', label: 'Terjangkau dulu, bisa upgrade nanti', val: 'start' },
+      { icon: '💡', label: 'Yang paling efisien dari budget yang ada', val: 'efficient' },
+    ]
+  },
+  {
+    id: 'area',
+    title: 'Kamu sering berobat atau tinggal di mana?',
+    sub: 'Menentukan cakupan wilayah yang direkomendasikan.',
+    opts: [
+      { icon: '🇮🇩', label: 'Indonesia saja', val: 'indonesia' },
+      { icon: '🌏', label: 'Sering ke Malaysia / Singapura', val: 'asia' },
+      { icon: '🌍', label: 'Internasional / tinggal di luar negeri', val: 'world' },
+    ]
+  }
+];
+
+let assessAnswers = {};
+let currentAssessQ = 0;
+
+function renderAssessQ() {
+  const q = ASSESS_QS[currentAssessQ];
+  const container = document.getElementById('assessQuestion');
+  const saved = assessAnswers[q.id];
+  const selectedVals = q.multi ? (Array.isArray(saved) ? saved : []) : (saved ? [saved] : []);
+
+  let optsHtml = q.opts.map(o => {
+    const sel = selectedVals.includes(o.val);
+    let multiCheck = '';
+    if (q.multi) {
+      multiCheck = '<span style="margin-left:auto;width:18px;height:18px;border-radius:50%;border:1.5px solid '+(sel ? 'var(--green)' : 'var(--border)')+';background:'+(sel ? 'var(--green)' : 'transparent')+';display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;flex-shrink:0;">'+(sel ? '✓' : '')+'</span>';
+    }
+    return '<button class="assess-opt'+(sel ? ' selected' : '')+'" data-val="'+o.val+'" onclick="selectAssessOpt(this)">' +
+      '<span class="ao-icon">'+o.icon+'</span><span>'+o.label+'</span>'+multiCheck+'</button>';
+  }).join('');
+
+  container.innerHTML =
+    '<div class="assess-q"><div class="assess-q-title">'+q.title+'</div>' +
+    '<div class="assess-q-sub">'+q.sub+'</div>' +
+    '<div class="assess-opts">'+optsHtml+'</div></div>';
+
+  ASSESS_QS.forEach((_, i) => {
+    const dot = document.getElementById('ap'+i);
+    if (!dot) return;
+    dot.classList.remove('active','done');
+    if (i < currentAssessQ) dot.classList.add('done');
+    else if (i === currentAssessQ) dot.classList.add('active');
+  });
+
+  const backBtn = document.getElementById('assessBackBtn');
+  if (backBtn) backBtn.style.display = currentAssessQ > 0 ? 'block' : 'none';
+  updateAssessNextBtn();
+}
+
+function selectAssessOpt(btn) {
+  const q = ASSESS_QS[currentAssessQ];
+  if (q.multi) {
+    const val = btn.dataset.val;
+    let current = Array.isArray(assessAnswers[q.id]) ? [...assessAnswers[q.id]] : [];
+    if (val === 'none') { current = current.includes('none') ? [] : ['none']; }
+    else { current = current.filter(v => v !== 'none'); if (current.includes(val)) current = current.filter(v => v !== val); else current.push(val); }
+    assessAnswers[q.id] = current;
+  } else { assessAnswers[q.id] = btn.dataset.val; }
+  renderAssessQ(); updateAssessNextBtn();
+}
+
+function updateAssessNextBtn() {
+  const q = ASSESS_QS[currentAssessQ];
+  const btn = document.getElementById('assessNextBtn');
+  let answered = q.multi ? (Array.isArray(assessAnswers[q.id]) && assessAnswers[q.id].length > 0) : !!assessAnswers[q.id];
+  btn.style.opacity = answered ? '1' : '0.4';
+  btn.style.pointerEvents = answered ? 'auto' : 'none';
+  btn.textContent = currentAssessQ === ASSESS_QS.length - 1 ? 'Lihat Rekomendasi →' : 'Lanjut →';
+}
+
+function skipAssessment() { updateSteps(2); goTo('count'); }
+function assessNext() { if (currentAssessQ < ASSESS_QS.length - 1) { currentAssessQ++; renderAssessQ(); } else { showRecommendation(); } }
+function assessBack() { if (currentAssessQ > 0) { currentAssessQ--; renderAssessQ(); } }
+
+function showRecommendation() {
+  const a = assessAnswers;
+  let planKey = 'plan_b';
+  let reasons = [];
+  let tags = [];
+
+  const coverageArr = Array.isArray(a.coverage) ? a.coverage : (a.coverage ? [a.coverage] : []);
+  const area = a.area;
+  const budget = a.budget;
+  const concern = a.concern;
+  const hasNone = coverageArr.includes('none');
+  const hasBPJS = coverageArr.includes('bpjs');
+  const hasCompany = coverageArr.includes('company');
+  const hasPrivate = coverageArr.includes('private');
+
+  // Area-based recommendation
+  if (area === 'world') {
+    planKey = budget === 'max' ? 'plan_e' : 'plan_d';
+  } else if (area === 'asia') {
+    planKey = budget === 'max' ? 'plan_c' : 'plan_c';
+  } else {
+    // Indonesia
+    if (budget === 'max') planKey = 'plan_b';
+    else if (budget === 'start') planKey = 'plan_a';
+    else planKey = 'plan_b';
+  }
+
+  // Upgrade to no inner limit if no existing coverage
+  if ((hasNone || (hasBPJS && !hasCompany && !hasPrivate)) && planKey === 'plan_a') {
+    planKey = 'plan_b';
+  }
+
+  const plan = PLANS.find(p => p.key === planKey);
+
+  // Build reasons
+  if (hasNone) reasons.push('Kamu <strong>belum punya perlindungan apapun</strong> -- MiUHC adalah langkah pertama yang tepat.');
+  if (hasBPJS && !hasPrivate) reasons.push('BPJS saja <strong>sering tidak cukup</strong> untuk rawat inap di RS swasta pilihan.');
+  if (hasCompany && !hasPrivate) reasons.push('Asuransi kantor bisa hilang saat resign -- <strong>proteksi pribadi tetap penting</strong>.');
+  if (hasPrivate) reasons.push('Kamu sudah punya proteksi -- saatnya <strong>upgrade ke MiUHC coverage yang lebih luas</strong>.');
+  if (concern === 'both' || concern === 'health') reasons.push('MiUHC memberikan perlindungan <strong>as charged tanpa inner limit</strong> (Plan B-E).');
+  if (budget === 'efficient') reasons.push('Plan ini memberikan <strong>value terbaik</strong> di kelasnya.');
+  if (budget === 'max') reasons.push('Plan ini menawarkan <strong>perlindungan paling luas</strong> yang tersedia.');
+  if (area === 'world') reasons.push('Cakupan <strong>seluruh dunia</strong> cocok untuk mobilitas internasionalmu.');
+  if (area === 'asia') reasons.push('Cakupan <strong>Indonesia + Malaysia & Singapura</strong> ideal untuk kamu.');
+
+  // Tags
+  tags = [
+    '🛏 '+plan.bed,
+    plan.areaShort,
+    plan.ded ? '⚡ Dengan Inner Limit' : '✅ Tanpa Inner Limit'
+  ];
+
+  // Life insurance note
+  let lifeNote = '';
+  if (concern === 'life' || concern === 'both' || a.dependent === 'family' || a.dependent === 'extended') {
+    lifeNote = '<div style="margin-top:14px;padding:12px 14px;background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.25);border-radius:10px;font-size:12px;color:var(--dc-t2);line-height:1.6;">' +
+      '🛡 <strong style="color:#a78bfa;">Catatan dari Petrus Jakub:</strong> Berdasarkan profilmu, kamu juga perlu mempertimbangkan <strong style="color:var(--dc-t1);">asuransi jiwa</strong>. Di halaman ringkasan nanti ada info lebih lanjut.</div>';
+  }
+
+  document.getElementById('recoCard').innerHTML =
+    '<div class="reco-card">' +
+      '<div class="reco-eyebrow">✦ Rekomendasi untuk kamu</div>' +
+      '<div class="reco-title">'+plan.name+'</div>' +
+      '<div class="reco-reason">'+reasons.map(r => '• '+r).join('<br>')+'</div>' +
+      '<div class="reco-tags">'+tags.map(t => '<span class="reco-tag">'+t+'</span>').join('')+'</div>' +
+      lifeNote +
+    '</div>';
+
+  updateSteps(1);
+  goTo('reco');
+}
+
+function goToCount() {
+  const recoCard = document.getElementById('recoCard');
+  const planTag = recoCard?.querySelector('.reco-title')?.textContent;
+  const match = PLANS.find(p => p.name === planTag);
+  if (match && persons.length > 0) persons.forEach(p => p.plan = match.key);
+  updateSteps(2);
+  goTo('count');
+}
+
+// Init assessment on load
+renderAssessQ();
+
+// TOAST NOTIFICATION
+let toastTimeout;
+function showToast(msg) {
+  const toast = document.getElementById('appToast');
+  const msgEl = document.getElementById('appToastMsg');
+  if (!toast || !msgEl) return;
+  msgEl.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => hideToast(), 4000);
+}
+function hideToast() { const toast = document.getElementById('appToast'); if (toast) toast.classList.remove('show'); }
+
+function fmt(n) { return 'Rp ' + n.toLocaleString('id-ID'); }
+
+// INTERSECTION OBSERVER FOR REVEAL ANIMATIONS
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Add reveal class to dynamic elements
+  const addRevealToCards = () => {
+    document.querySelectorAll('.summary-card, .form-card, .count-btn').forEach(el => {
+      if (!el.classList.contains('reveal')) {
+        el.classList.add('reveal');
+        observer.observe(el);
+        // Trigger visible immediately if already in viewport
+        setTimeout(() => el.classList.add('visible'), 50);
+      }
+    });
+  };
+
+  // Observe mutations for dynamic content
+  const mutationObserver = new MutationObserver(addRevealToCards);
+  mutationObserver.observe(document.querySelector('.app'), { childList: true, subtree: true });
+});
+</script>
+</body>
+</html>
